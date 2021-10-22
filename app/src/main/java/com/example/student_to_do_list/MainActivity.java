@@ -1,5 +1,6 @@
 package com.example.student_to_do_list;
 // Salut c'est JM!
+// Salut JM
 // un autre truc
 import android.os.Bundle;
 
