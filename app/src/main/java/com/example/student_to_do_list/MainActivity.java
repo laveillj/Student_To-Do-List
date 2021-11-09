@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.student_to_do_list.databinding.ActivityMainBinding;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -37,7 +39,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addNewTask(View view)  {
-        Toast.makeText(this, "You click on 'ADD TASK' button!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You click on ADD NEW TASK", Toast.LENGTH_LONG).show();
+    }
+
+    public void addNewProject(View view)  {
+        Toast.makeText(this, "You click on ADD NEW PROJECT", Toast.LENGTH_LONG).show();
     }
 
 }
