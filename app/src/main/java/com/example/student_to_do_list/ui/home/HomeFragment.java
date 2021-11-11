@@ -9,41 +9,62 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.student_to_do_list.R;
-import com.example.student_to_do_list.databinding.FragmentTasksBinding;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-    private FragmentTasksBinding binding;
+    static ArrayList<String> tasksList = new ArrayList<>();
+    RecyclerView recyclerView;
+    TasksRVAdapter rvAdapter;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_tasks, container, false);
 
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        //create RV adapter from data (fruits strings)
+        rvAdapter = new TasksRVAdapter(tasksList);
 
-        binding = FragmentTasksBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_tasks);
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        // set adapter to RV
+        recyclerView.setAdapter(rvAdapter);
+
+        // set RV layout: vertical list
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        // RV size doesn't depend on amount of content
+        recyclerView.hasFixedSize();
+
+
+        // Set the RV item divider decoration.
+        // OptionalRVDividerItemDecoration works exactly the same as std DividerItemDecoration
+        recyclerView.addItemDecoration(
+                new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL)
+        );
+
+        //Add new task button listener
+        ImageButton addTaskButton = (ImageButton) view.findViewById(R.id.addTaskButton);
+        addTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "You click on ADD NEW TASK", Toast.LENGTH_SHORT).show();
+                tasksList.add("New Task");
+                rvAdapter.notifyDataSetChanged();
             }
         });
-        return root;
+
+        return view;
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public void onDestroy() {
+        super.onDestroy();
     }
+
 }
