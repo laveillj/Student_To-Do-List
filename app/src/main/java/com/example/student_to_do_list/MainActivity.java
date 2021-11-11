@@ -2,6 +2,7 @@ package com.example.student_to_do_list;
 
 import android.os.Bundle;
 
+import com.example.student_to_do_list.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,12 +39,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
-    public void addNewTask(View view)  {
-        Toast.makeText(this, "You click on ADD NEW TASK", Toast.LENGTH_LONG).show();
-    }
-
     public void addNewProject(View view)  {
-        Toast.makeText(this, "You click on ADD NEW PROJECT", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "You click on ADD NEW PROJECT", Toast.LENGTH_SHORT).show();
     }
 
 }
