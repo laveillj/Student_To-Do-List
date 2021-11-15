@@ -12,18 +12,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.student_to_do_list.R;
 import com.example.student_to_do_list.databinding.FragmentProjectsBinding;
 
 public class DashboardFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private Project_Activity dashboardViewModel;
     private FragmentProjectsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+                new ViewModelProvider(this).get(Project_Activity.class);
 
         binding = FragmentProjectsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
