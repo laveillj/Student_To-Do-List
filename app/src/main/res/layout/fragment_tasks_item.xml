@@ -4,10 +4,29 @@
     android:layout_height="wrap_content"
     android:padding="20dip">
 
+    <CheckBox
+        android:id="@+id/task_status"
+        android:checked="false"
+        android:button="@drawable/task_status_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
     <TextView
         android:id="@+id/fragment_tasks_item_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="20dp"
+        android:layout_gravity="center" />
+
+    <ImageView
+        android:id="@+id/task_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/expand_arrow_0"
+        android:layout_gravity="center" />
 
 </LinearLayout>
