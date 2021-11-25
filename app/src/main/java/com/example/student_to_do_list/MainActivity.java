@@ -39,8 +39,5 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
-    public void addNewProject(View view)  {
-        Toast.makeText(this, "You click on ADD NEW PROJECT", Toast.LENGTH_SHORT).show();
-    }
 
 }
