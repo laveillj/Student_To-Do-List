@@ -1,5 +1,6 @@
 package com.example.student_to_do_list;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.student_to_do_list.ui.home.HomeFragment;
@@ -11,8 +12,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.example.student_to_do_list.databinding.ActivityMainBinding;
 
@@ -39,5 +38,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    public void addNewTask(View view) {
+        Intent intent = new Intent(this, NewTaskActivity.class);
+        //EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
+       // String message = editText.getText().toString();
+       // intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
 
 }
