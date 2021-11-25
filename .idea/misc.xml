@@ -4,26 +4,30 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3828125" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/activity_new_task.xml" value="0.17274569402228976" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/fragment_project_2.xml" value="0.33" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/fragment_project_2.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/fragment_projects.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/fragment_settings.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/fragment_tasks.xml" value="0.1" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/fragment_tasks_item.xml" value="0.1" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/list_item.xml" value="0.3029891304347826" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/project_card.xml" value="0.35104166666666664" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2453125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/fragment_tasks_item.xml" value="0.3828125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/ic_tasklist_white.xml" value="0.3828125" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/task_status_selector.xml" value="0.3828125" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/font/inter.xml" value="0.396875" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_dashboard.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_notifications.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_project_2.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_projects.xml" value="0.3428442028985507" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_task_2.xml" value="0.33" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_tasks.xml" value="0.33" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_tasks_item.xml" value="0.25" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/project_card.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3828125" />
