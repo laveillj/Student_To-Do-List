@@ -36,13 +36,23 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+
+        //################# Add tasks #########################
+        // IL FAUT MAINTENANT : pouvoir envoyer le message du intent (ou le intent direct) vers le fragment pour modifier la recycler view
+
+        // Get the Intent that started this activity and extract the string
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(NewTaskActivity.EXTRA_MESSAGE);
+
+        // Capture the layout's TextView and set the string as its text
+        //TextView textView = findViewById(R.id.textView);
+        //textView.setText(message);
+
     }
 
     public void addNewTask(View view) {
         Intent intent = new Intent(this, NewTaskActivity.class);
-        //EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
-       // String message = editText.getText().toString();
-       // intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 
