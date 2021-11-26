@@ -19,9 +19,9 @@ public class NewTaskActivity extends AppCompatActivity {
 
     public void validateNewTask(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        EditText editText = (EditText) findViewById(R.id.textInputLayout_name_new_task);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
+        EditText taskName = (EditText) findViewById(R.id.task_name);
+        String strTaskName = taskName.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, strTaskName);
         startActivity(intent);
     }
 }
