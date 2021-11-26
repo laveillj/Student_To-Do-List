@@ -38,13 +38,21 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        /*
+        TasksFragment tasksFragment = new TasksFragment();
+        tasksFragment.setDatalist(DataListUtils.getDatalist());
+        getSupportFragmentManager().beginTransaction()
+            .add(R.id.firstpane_placeholder, tasksFragment)
+            .commit();
+         */
+
 
         //################# Add tasks #########################
         // IL FAUT MAINTENANT : pouvoir envoyer le message du intent (ou le intent direct) vers le fragment pour modifier la recycler view
 
         //Fragment tasksFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
+        //TasksFragment tasksFragment = (TasksFragment)getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
 
-        TasksFragment tasksFragment = (TasksFragment)getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
@@ -54,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
         bundleToTasksFragment.putString("newTaskName", strTaskName);
         tasksFragment.setArguments(bundleToTasksFragment);*/
 
-        if(tasksFragment != null && tasksFragment.isAdded()) {
+        /*if(tasksFragment != null && tasksFragment.isAdded()) {
             tasksFragment.tasksList.add(strTaskName);
             tasksFragment.rvAdapter.notifyDataSetChanged();
-        }
+        }*/
 
 
     }
