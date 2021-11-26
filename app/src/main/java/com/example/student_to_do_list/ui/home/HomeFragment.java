@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
         );
 
         //Add new task button listener
-        ImageButton addTaskButton = (ImageButton) view.findViewById(R.id.addTaskButton);
+        /*ImageButton addTaskButton = (ImageButton) view.findViewById(R.id.addTaskButton);
         addTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
                 tasksList.add("New Task");
                 rvAdapter.notifyDataSetChanged();
             }
-        });
+        });*/
 
         return view;
     }
