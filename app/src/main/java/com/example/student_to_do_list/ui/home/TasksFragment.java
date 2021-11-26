@@ -18,11 +18,11 @@ import com.example.student_to_do_list.R;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class TasksFragment extends Fragment {
 
-    static ArrayList<String> tasksList = new ArrayList<>();
-    RecyclerView recyclerView;
-    TasksRVAdapter rvAdapter;
+    public static ArrayList<String> tasksList = new ArrayList<>();
+    public RecyclerView recyclerView;
+    public TasksRVAdapter rvAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

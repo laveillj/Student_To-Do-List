@@ -23,7 +23,7 @@ import com.example.student_to_do_list.ui.home.TasksRVAdapter;
 
 import java.util.ArrayList;
 
-public class DashboardFragment extends Fragment {
+public class ProjectsFragment extends Fragment {
 
     static ArrayList<String> projectList = new ArrayList<>();
     RecyclerView recyclerView;

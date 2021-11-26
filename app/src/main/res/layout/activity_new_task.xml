@@ -59,11 +59,11 @@
         android:id="@+id/textInputLayout_name_new_task"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/deadline_title_new_task"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_new_task">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/task_name"
@@ -77,11 +77,12 @@
         android:id="@+id/deadline_title_new_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="Deadline"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout_name_new_task"
-        tools:layout_editor_absoluteY="256dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_name_new_task" />
 
     <EditText
         android:id="@+id/editDate_new_task"

@@ -3,7 +3,7 @@ package com.example.student_to_do_list;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.student_to_do_list.ui.home.HomeFragment;
+import com.example.student_to_do_list.ui.home.TasksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,13 +41,17 @@ public class MainActivity extends AppCompatActivity {
         //################# Add tasks #########################
         // IL FAUT MAINTENANT : pouvoir envoyer le message du intent (ou le intent direct) vers le fragment pour modifier la recycler view
 
+        //TasksFragment tasksFragment = (TasksFragment)getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
+
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String message = intent.getStringExtra(NewTaskActivity.EXTRA_MESSAGE);
+        String strTaskName = intent.getStringExtra(NewTaskActivity.EXTRA_MESSAGE);
 
-        // Capture the layout's TextView and set the string as its text
-        //TextView textView = findViewById(R.id.textView);
-        //textView.setText(message);
+        /*if(tasksFragment != null && tasksFragment.isAdded()) {
+            tasksFragment.tasksList.add(strTaskName);
+            tasksFragment.rvAdapter.notifyDataSetChanged();
+        }*/
+
 
     }
 
