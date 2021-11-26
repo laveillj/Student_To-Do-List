@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/checkmark" />
+        app:srcCompat="@drawable/checkmark"
+        android:onClick="validateNewProject"/>
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -80,7 +81,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress2"
+            android:id="@+id/editCollaboratorMail"
             android:layout_width="233dp"
             android:layout_height="48dp"
             android:layout_marginEnd="15dp"
@@ -105,7 +106,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/project_description"
+            android:id="@+id/editProject_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
@@ -143,7 +144,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/project_name"
+            android:id="@+id/editProject_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Project Name" />
@@ -170,7 +171,7 @@
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/editDeadline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -184,10 +185,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginBottom="24dp"
         android:text="Deadline"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="256dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
