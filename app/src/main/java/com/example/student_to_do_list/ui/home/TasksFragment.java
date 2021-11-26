@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.student_to_do_list.MainActivity;
 import com.example.student_to_do_list.R;
 
 import java.util.ArrayList;
@@ -65,6 +66,17 @@ public class TasksFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        /*Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String newTaskName = bundle.getString("newTaskName");
+        }
+        tasksList.add("abc");*/
     }
 
 }
