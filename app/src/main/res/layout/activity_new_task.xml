@@ -13,6 +13,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="58dp"
         android:foreground="@drawable/return_button"
+        android:stateListAnimator="@null"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +24,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="15dp"
         android:foreground="@drawable/checkmark"
+        android:stateListAnimator="@null"
         android:foregroundGravity="center"
         android:onClick="validateNewTask"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,12 +34,12 @@
         android:id="@+id/title_new_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="125dp"
         android:text="Add New Task"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/validateButton_new_task"
+        app:layout_constraintStart_toEndOf="@+id/returnButton_new_task"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -55,6 +57,7 @@
         android:id="@+id/textInputLayout_name_new_task"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +98,9 @@
         android:id="@+id/textInputLayout_description_new_task"
         android:layout_width="340dp"
         android:layout_height="150dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="80dp"
+        android:layout_marginEnd="10dp"
         android:background="#ECEBEB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
