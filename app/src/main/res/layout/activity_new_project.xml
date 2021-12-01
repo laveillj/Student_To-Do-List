@@ -41,29 +41,14 @@
         app:layout_constraintEnd_toStartOf="@+id/validateButton_new_project"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/collab_container"
-        android:layout_width="291dp"
-        android:layout_height="79dp"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:id="@+id/container_collab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="340dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="150dp"
         android:background="#E1E1E1"
-        app:layout_constraintBottom_toTopOf="@+id/collab_container"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -72,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="Add"
+            android:text="Send"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,9 +69,9 @@
             android:layout_height="48dp"
             android:layout_marginEnd="15dp"
             android:ems="10"
+            android:hint="E-mail"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            android:hint="E-mail"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_addcollab"
             app:layout_constraintStart_toStartOf="parent"
