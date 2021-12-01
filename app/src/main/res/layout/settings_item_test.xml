@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical">
+    <View
+        android:background="#D3D3D3"
+        android:id="@+id/item_divider" />
+    <TextView
+        android:id="@+id/item_title"
+        tools:text="Léon: The Professional" />
+    <LinearLayout
+        android:id="@+id/sub_item"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/sub_item_genre"
+            tools:text="Genre:  Crime, Drama, Thriller" />
+        <TextView
+            android:id="@+id/sub_item_year"
+            tools:text="Year: 1993" />
+    </LinearLayout>
+</LinearLayout>

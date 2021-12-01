@@ -52,23 +52,11 @@ public class TasksFragment extends Fragment {
         // RV size doesn't depend on amount of content
         recyclerView.hasFixedSize();
 
-
         // Set the RV item divider decoration.
         // OptionalRVDividerItemDecoration works exactly the same as std DividerItemDecoration
         recyclerView.addItemDecoration(
                 new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL)
         );
-
-        //Add new task button listener
-        /*ImageButton addTaskButton = (ImageButton) view.findViewById(R.id.addTaskButton);
-        addTaskButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "You click on ADD NEW TASK", Toast.LENGTH_SHORT).show();
-                tasksList.add("New Task");
-                rvAdapter.notifyDataSetChanged();
-            }
-        });*/
 
         Button clearTasks = (Button) view.findViewById(R.id.clearButton);
         clearTasks.setOnClickListener(new View.OnClickListener() {

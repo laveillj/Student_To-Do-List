@@ -17,11 +17,13 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
     List<String> dataList;
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
-        TextView txt;
+        TextView title;
+        TextView description;
+        TextView date;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
-            txt = (TextView) itemView.findViewById(R.id.fragment_tasks_item_title);
+            title = (TextView) itemView.findViewById(R.id.fragment_tasks_item_title);
         }
     }
 
@@ -40,7 +42,7 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        holder.txt.setText(dataList.get(position));
+        holder.title.setText(dataList.get(position));
     }
 
     @Override
