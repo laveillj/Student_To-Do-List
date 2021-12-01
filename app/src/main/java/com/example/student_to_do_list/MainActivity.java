@@ -1,12 +1,15 @@
 package com.example.student_to_do_list;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.example.student_to_do_list.ui.home.TasksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -38,20 +41,59 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
 
+
+
+
+        /*
+        TasksFragment tasksFragment = new TasksFragment();
+        tasksFragment.setDatalist(DataListUtils.getDatalist());
+        getSupportFragmentManager().beginTransaction()
+            .add(R.id.firstpane_placeholder, tasksFragment)
+            .commit();
+         */
+
+
         //################# Add tasks #########################
         // IL FAUT MAINTENANT : pouvoir envoyer le message du intent (ou le intent direct) vers le fragment pour modifier la recycler view
 
+        //Fragment tasksFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
         //TasksFragment tasksFragment = (TasksFragment)getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
 
-        // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        String strTaskName = intent.getStringExtra(NewTaskActivity.EXTRA_MESSAGE);
+
+
+        /*Bundle bundleToTasksFragment = new Bundle();
+        bundleToTasksFragment.putString("newTaskName", strTaskName);
+        tasksFragment.setArguments(bundleToTasksFragment);*/
 
         /*if(tasksFragment != null && tasksFragment.isAdded()) {
             tasksFragment.tasksList.add(strTaskName);
             tasksFragment.rvAdapter.notifyDataSetChanged();
         }*/
 
+
+    }
+
+    @Override   //intent su le resume au lieu du creates
+    public void onResume() {
+        super.onResume();
+        // Get the Intent that started this activity and extract the string
+        Intent intent = getIntent();
+        String strTaskName = intent.getStringExtra(NewTaskActivity.EXTRA_MESSAGE);
+        //System.out.println(strTaskName);
+
+        // ### DATA BASE ###
+        TasksContract.TasksDbHelper tasksDbHelper = new TasksContract.TasksDbHelper(this);
+
+        // Gets the data repository in write mode
+        SQLiteDatabase tasksDb = tasksDbHelper.getWritableDatabase();
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(TasksContract.TasksEntry.COLUMN_NAME_TITLE, strTaskName);
+        values.put(TasksContract.TasksEntry.COLUMN_NAME_DESCRIPTION, strTaskName);
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId = tasksDb.insert(TasksContract.TasksEntry.TABLE_NAME, null, values);
 
     }
 
