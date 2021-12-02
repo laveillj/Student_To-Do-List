@@ -35,12 +35,13 @@ public class NewProjectActivity extends AppCompatActivity {
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!email.getText().toString().isEmpty() && !pj_name.getText().toString().isEmpty() && !pj_description.getText().toString().isEmpty())
+                if (!email.getText().toString().isEmpty() && !pj_name.getText().toString().isEmpty() && !pj_description.getText().toString().isEmpty() && !deadline.getText().toString().isEmpty())
                 {
                     Intent intentmail = new Intent(Intent.ACTION_SEND);
                     intentmail.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
                     intentmail.putExtra(Intent.EXTRA_SUBJECT, pj_name.getText().toString());
                     intentmail.putExtra(Intent.EXTRA_TEXT, pj_description.getText().toString());
+                    intentmail.putExtra(Intent.EXTRA_TEXT, deadline.getText().toString());
                     intentmail.setType("message/rfc822");
                     if(intentmail.resolveActivity(getPackageManager()) != null) {
                         startActivity(intentmail);

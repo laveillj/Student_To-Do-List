@@ -53,7 +53,7 @@ public class ProjectsFragment extends Fragment {
         );
 
         //Add new task button listener
-        ImageButton addProjectBT = (ImageButton) view.findViewById(R.id.addProjectButton);
+        /*ImageButton addProjectBT = (ImageButton) view.findViewById(R.id.addProjectButton);
         addProjectBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +61,7 @@ public class ProjectsFragment extends Fragment {
                 projectList.add("New Project");
                 rvAdapter.notifyDataSetChanged();
             }
-        });
+        });*/
 
         return view;
     }
