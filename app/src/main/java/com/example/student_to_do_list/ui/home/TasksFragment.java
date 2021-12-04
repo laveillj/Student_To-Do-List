@@ -18,10 +18,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
+import com.example.student_to_do_list.DatabaseHelper;
 import com.example.student_to_do_list.MainActivity;
 import com.example.student_to_do_list.NewTaskActivity;
 import com.example.student_to_do_list.R;
+import com.example.student_to_do_list.Task;
 import com.example.student_to_do_list.TasksContract;
 
 import java.util.ArrayList;
@@ -30,13 +33,17 @@ import java.util.List;
 public class TasksFragment extends Fragment {
 
     private SQLiteDatabase tasksDb;
-    public ArrayList<String> tasksList = new ArrayList<>();
+    //public ArrayList<String> tasksList = new ArrayList<>();
+    public List<Task> tasksList = new ArrayList<>();
     public RecyclerView recyclerView;
     public TasksRVAdapter rvAdapter;
+    DatabaseHelper db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tasks, container, false);
+
+        this.updateTasksFromDb();
 
     //### RECYCLER VIEW ###
         //create RV adapter from data (fruits strings)
@@ -44,11 +51,13 @@ public class TasksFragment extends Fragment {
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_tasks);
 
-        // set adapter to RV
-        recyclerView.setAdapter(rvAdapter);
+        //Enable animation on task expansion
+        ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(true);
 
         // set RV layout: vertical list
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); //, LinearLayoutManager.VERTICAL, false
+        // set adapter to RV
+        recyclerView.setAdapter(rvAdapter);
         // RV size doesn't depend on amount of content
         recyclerView.hasFixedSize();
 
@@ -63,10 +72,11 @@ public class TasksFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "All tasks are cleared", Toast.LENGTH_SHORT).show();
-                int deletedRows = tasksDb.delete(TasksContract.TasksEntry.TABLE_NAME, null, null);
+                //int deletedRows = tasksDb.delete(TasksContract.TasksEntry.TABLE_NAME, null, null);
+                db.deleteAllTasks();
                 tasksList = new ArrayList<>();
-                rvAdapter.notifyDataSetChanged();
-                tasksDb.close();
+                rvAdapter = new TasksRVAdapter(tasksList);
+                recyclerView.setAdapter(rvAdapter);
             }
         });
         return view;
@@ -80,44 +90,15 @@ public class TasksFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        this.updateTasksFromDb();
+        rvAdapter = new TasksRVAdapter(tasksList);
+        recyclerView.setAdapter(rvAdapter);
+    }
 
+    public void updateTasksFromDb() {
         //### Tasks Database init ###
-        TasksContract.TasksDbHelper tasksDbHelper = new TasksContract.TasksDbHelper(getContext());
-        tasksDb = tasksDbHelper.getReadableDatabase();
-
-        // Define a projection that specifies which columns from the database
-        // you will actually use after this query.
-        String[] projection = {
-                BaseColumns._ID,
-                TasksContract.TasksEntry.COLUMN_NAME_TITLE,
-                TasksContract.TasksEntry.COLUMN_NAME_DESCRIPTION,
-        };
-
-        // Filter results WHERE "title" = 'My Title'
-        //String selection = TasksContract.TasksEntry.COLUMN_NAME_TITLE + " = ?";
-        //String[] selectionArgs = { "My Title" };
-
-        // How you want the results sorted in the resulting Cursor
-        String sortOrder =
-                TasksContract.TasksEntry.COLUMN_NAME_TITLE;
-
-        Cursor cursor = tasksDb.query(
-                TasksContract.TasksEntry.TABLE_NAME,   // The table to query
-                projection,             // The array of columns to return (pass null to get all)
-                null,              // The columns for the WHERE clause
-                null,          // The values for the WHERE clause
-                null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                sortOrder               // The sort order
-        );
-
-        //Add all tasks in database to tasksList Array
-        while(cursor.moveToNext()) {
-            String taskTitle = cursor.getString(cursor.getColumnIndexOrThrow(TasksContract.TasksEntry.COLUMN_NAME_TITLE));
-            tasksList.add(taskTitle);
-        }
-        rvAdapter.notifyDataSetChanged();
-        cursor.close();
+        db = new DatabaseHelper(getContext());
+        tasksList = db.getAllTasks();
     }
 
 }
