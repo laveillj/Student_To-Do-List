@@ -7,23 +7,22 @@
 
     <Button
         android:id="@+id/returnButton_new_project"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="59dp"
         android:layout_height="55dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="58dp"
-        android:foreground="@drawable/return_button"
-        android:stateListAnimator="@null"
+        android:layout_marginStart="1dp"
+        android:foreground="@drawable/back"
+        android:foregroundGravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/validateButton_new_project"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="59dp"
         android:layout_height="55dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="15dp"
-        android:foreground="@drawable/checkmark"
-        android:stateListAnimator="@null"
+        android:layout_marginEnd="1dp"
+        android:foreground="@drawable/check_vector"
         android:foregroundGravity="center"
         android:onClick="validateNewProject"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,27 +32,30 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:text="Add Project"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/validateButton_new_project"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/returnButton_new_project"
+        app:layout_constraintTop_toTopOf="@+id/validateButton_new_project" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="340dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="10dp"
         android:background="#E1E1E1"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <Button
             android:id="@+id/button_addcollab"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -82,11 +84,13 @@
         android:id="@+id/textInputLayout"
         android:layout_width="340dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="10dp"
         android:background="#ECEBEB"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editProject_description"
@@ -120,11 +124,12 @@
         android:id="@+id/textInputLayout2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editProject_name"
@@ -132,16 +137,6 @@
             android:layout_height="wrap_content"
             android:hint="Project Name" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="42dp"
-        android:layout_height="45dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout2"
-        app:srcCompat="@drawable/color_palette_choser" />
 
     <TextView
         android:id="@+id/textView5"
@@ -167,12 +162,25 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="60dp"
         android:text="Deadline"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+    <Button
+        android:id="@+id/button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="42dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
+        android:foreground="@drawable/ic_baseline_color_lens_24"
+        android:foregroundGravity="center"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

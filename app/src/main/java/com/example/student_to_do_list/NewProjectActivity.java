@@ -18,7 +18,8 @@ public class NewProjectActivity extends AppCompatActivity {
     EditText pj_description;
     EditText deadline;
     Button buttonSend;
-
+    String mail_content;
+    String mail_subject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +39,15 @@ public class NewProjectActivity extends AppCompatActivity {
                 if (!email.getText().toString().isEmpty() && !pj_name.getText().toString().isEmpty() && !pj_description.getText().toString().isEmpty() && !deadline.getText().toString().isEmpty())
                 {
                     Intent intentmail = new Intent(Intent.ACTION_SEND);
+
+                    mail_content = "Hello,\n\n" +  "Tu a été invité à participer au projet : " + pj_name.getText().toString() + "\n\n"
+                            + "Description du projet : \n" +  pj_description.getText().toString() + "\n\n" + "La date limite pour ce projet est " + deadline.getText().toString()
+                            + "\n\n" + "Nous t'invitons vivement à te retrousser les manches. \n" + "Bon courage soldat.";
+                    mail_subject = "Invitation à collaborer pour le projet : " + pj_name.getText().toString();
+                    
                     intentmail.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
-                    intentmail.putExtra(Intent.EXTRA_SUBJECT, pj_name.getText().toString());
-                    intentmail.putExtra(Intent.EXTRA_TEXT, pj_description.getText().toString());
-                    intentmail.putExtra(Intent.EXTRA_TEXT, deadline.getText().toString());
+                    intentmail.putExtra(Intent.EXTRA_SUBJECT, mail_subject);
+                    intentmail.putExtra(Intent.EXTRA_TEXT, mail_content);
                     intentmail.setType("message/rfc822");
                     if(intentmail.resolveActivity(getPackageManager()) != null) {
                         startActivity(intentmail);

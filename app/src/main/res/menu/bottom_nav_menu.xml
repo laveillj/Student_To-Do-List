@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/navigation_tasks"
-        android:icon="@drawable/task_list_logo"
+        android:icon="@drawable/task_logo"
         android:title="@string/title_tasks" />
 
     <item
         android:id="@+id/navigation_projects"
-        android:icon="@drawable/project_list_logo"
+        android:icon="@drawable/projet_logo"
         android:title="@string/title_projects" />
 
     <item
         android:id="@+id/navigation_settings"
-        android:icon="@drawable/settings_logo"
-        android:title="@string/title_settings" />
+        android:icon="@drawable/credit_logo"
+        android:title="@string/title_credit" />
 
 </menu>
