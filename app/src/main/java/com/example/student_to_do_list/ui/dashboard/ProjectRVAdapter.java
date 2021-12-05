@@ -30,7 +30,7 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
 
        public ItemViewHolder2(View itemView) {
            super(itemView);
-           txt = (TextView) itemView.findViewById(R.id.fragment_tasks_item_title);
+           txt = (TextView) itemView.findViewById(R.id.name_project);
            //deadline = (TextView) itemView.findViewById(R.id.deadline_project);
        }
    }
