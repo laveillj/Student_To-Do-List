@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_tasks"
     android:layout_width="match_parent"
@@ -13,25 +14,29 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
-    <ImageButton
+    <Button
         android:id="@+id/addTaskButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="66dp"
-        android:background="@drawable/add_logo"
-        android:onClick="addNewTask" />
+        android:foreground="@drawable/add_logo"
+        android:onClick="addNewTask"
+        app:cornerRadius="30dp" />
 
     <Button
         android:id="@+id/clearButton"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="72dp"
-        android:text="CLEAR ALL" />
+        android:text="CLEAR ALL"
+        android:textColor= "@color/black"/>
 
 </RelativeLayout>

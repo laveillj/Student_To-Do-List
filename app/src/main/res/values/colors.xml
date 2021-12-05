@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="half_visible_white">#80FFFFFF</color>
     <color name="theme_gold">#FFC59314</color>
+
+    <color name="accent_calendar_night">#FF313131</color>
+    <color name="control_activated_calendar_night">#FF7BAFFF</color>
+    <color name="text_color_calendar_night">#FF1156D1</color>
+
+
 </resources>
