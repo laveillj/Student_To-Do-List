@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     long task_id = db.createTask(task);
                     break;
                 case "PROJECT":
-                    Project project = new Task(strName, strDesc, strDeadline);
+                    Project project = new Project(strName, strDesc, strDeadline);
                     long project_id = db.createProject(project);
                     break;
             }

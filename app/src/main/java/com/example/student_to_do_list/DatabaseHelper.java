@@ -175,12 +175,114 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    
     //
     // PROJECTS management functions
     //
 
+    /*
+     * Creating a project
+     */
+    public long createProject(Project project) {
+        SQLiteDatabase db = this.getWritableDatabase();
 
+        ContentValues values = new ContentValues();
+        values.put(KEY_PROJECT, project.getTitle());
+        values.put(KEY_P_DESC, project.getDescription());
+        values.put(KEY_P_DEADLINE, project.getDeadline());
+
+        // insert row
+        long project_id = db.insert(TABLE_PROJECTS, null, values);
+
+        return project_id;
+    }
+
+    /*
+     * get single project
+     */
+    public Project getProject(long project_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_PROJECTS + " WHERE " + KEY_ID + " = " + project_id;
+
+        Log.e(LOG, selectQuery);
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c != null)
+            c.moveToFirst();
+
+        String title = c.getString(c.getColumnIndex(KEY_PROJECT));
+        String desc = c.getString(c.getColumnIndex(KEY_P_DESC));
+        String deadline = c.getString(c.getColumnIndex(KEY_P_DEADLINE));
+        Project project = new Project(title, desc, deadline);
+
+        project.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+
+        return project;
+    }
+
+    /*
+     * getting all projects
+     * */
+    public List<Project> getAllProjects() {
+        List<Project> listOfProjects = new ArrayList<Project>();
+        String selectQuery = "SELECT  * FROM " + TABLE_PROJECTS;
+
+        Log.e(LOG, selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                String title = c.getString(c.getColumnIndex(KEY_PROJECT));
+                String desc = c.getString(c.getColumnIndex(KEY_P_DESC));
+                String deadline = c.getString(c.getColumnIndex(KEY_P_DEADLINE));
+                Project project = new Project(title, desc, deadline);
+                project.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+
+                // adding to projects list
+                listOfProjects.add(project);
+            } while (c.moveToNext());
+        }
+        return listOfProjects;
+    }
+
+    /*
+     * Updating a project
+     */
+    public int updateProject(Project project) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_PROJECT, project.getTitle());
+        values.put(KEY_P_DESC, project.getDescription());
+        values.put(KEY_P_DEADLINE, project.getDeadline());
+
+        // updating row
+        return db.update(TABLE_PROJECTS, values, KEY_ID + " = ?",
+                new String[] { String.valueOf(project.getId()) });
+    }
+
+    /*
+     * Deleting projects
+     */
+    public void deleteProject(long project_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PROJECTS, KEY_ID + " = ?",
+                new String[] { String.valueOf(project_id) });
+    }
+
+    public void deleteAllProjects() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PROJECTS, null, null);
+    }
+
+    
+    //
     // closing database
+    //
     public void closeDB() {
         SQLiteDatabase db = this.getReadableDatabase();
         if (db != null && db.isOpen())
