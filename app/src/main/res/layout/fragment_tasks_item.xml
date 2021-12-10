@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/expand_arrow_0"
+            android:src="@drawable/expand"
             android:layout_marginRight="10dp"/>
     </LinearLayout>
 

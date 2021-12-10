@@ -24,7 +24,7 @@
     <style name="MyDatePickerStyle" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/control_activated_calendar_night</item>
         <!--selected Item color-->
-        <item name="colorControlActivated">@color/text_color_calendar_night</item>
+        <item name="colorControlActivated">@color/control_activated_calendar_night</item>
         <!-- arrow bordercolor(<>)-->
         <item name="android:selectableItemBackgroundBorderless">@color/white</item>
         <!-- Highlight item color-->

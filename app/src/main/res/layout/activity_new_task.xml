@@ -37,7 +37,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:text="Add New Task"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/returnButton_new_task"
         app:layout_constraintTop_toTopOf="@+id/validateButton_new_task" />
@@ -48,7 +47,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout_name_new_task"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout_name_new_task" />
@@ -78,7 +76,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="Deadline"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout_name_new_task"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout_name_new_task" />
@@ -88,6 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:focusableInTouchMode="false"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="@+id/deadline_title_new_task"
@@ -99,9 +97,8 @@
         android:layout_width="340dp"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="10dp"
-        android:background="#ECEBEB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deadline_title_new_task">
@@ -110,7 +107,6 @@
             android:id="@+id/task_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
             android:hint="Task Description" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,7 +115,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout_description_new_task"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout_description_new_task" />
