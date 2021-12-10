@@ -49,19 +49,25 @@ public class MainActivity extends AppCompatActivity {
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String strTaskName = intent.getStringExtra(NewTaskActivity.EXTRA_NAME);
-        String strTaskDesc = intent.getStringExtra(NewTaskActivity.EXTRA_DESC);
-        // DEADLINE HERE
-        System.out.println("##### " + strTaskName);
-        System.out.println("##### " + strTaskDesc);
+        String strName = intent.getStringExtra(NewTaskActivity.EXTRA_NAME);
+        String strDesc = intent.getStringExtra(NewTaskActivity.EXTRA_DESC);
+        String strDeadline = intent.getStringExtra(NewTaskActivity.EXTRA_DEADLINE);
+        String strType = intent.getStringExtra(NewTaskActivity.EXTRA_TYPE);
 
         // ### DATA BASE ###
         db = new DatabaseHelper(getApplicationContext());
-        if(strTaskName != null) {
-            Task task = new Task(strTaskName, strTaskDesc, "2021");
-            long task_id = db.createTask(task);
+        if(strName != null) {
+            switch(strType){
+                case "TASK":
+                    Task task = new Task(strName, strDesc, strDeadline);
+                    long task_id = db.createTask(task);
+                    break;
+                case "PROJECT":
+                    Project project = new Task(strName, strDesc, strDeadline);
+                    long project_id = db.createProject(project);
+                    break;
+            }
         }
-
 
         /*TasksContract.TasksDbHelper tasksDbHelper = new TasksContract.TasksDbHelper(this);
 
