@@ -2,12 +2,17 @@ package com.example.student_to_do_list;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class NewProjectActivity extends AppCompatActivity {
 
@@ -21,6 +26,9 @@ public class NewProjectActivity extends AppCompatActivity {
     String mail_content;
     String mail_subject;
 
+    EditText etDate;
+    DatePickerDialog.OnDateSetListener setListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +38,33 @@ public class NewProjectActivity extends AppCompatActivity {
         pj_name = findViewById(R.id.editProject_name);
         pj_description = findViewById(R.id.editProject_description);
         deadline = findViewById(R.id.editDeadline);
-
         buttonSend = findViewById(R.id.button_addcollab);
 
-        buttonSend.setOnClickListener(new View.OnClickListener() {
+        etDate = findViewById(R.id.editDeadline);
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        etDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        NewProjectActivity.this, R.style.MyDatePickerStyle, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month+1;
+                        String date = dayOfMonth+"/"+month+"/"+year;
+                        etDate.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+            }
+        });
+
+        buttonSend.setOnClickListener(new View.OnClickListener() { //A l'appui du bouton send, on concatene le mail à envoyer avec les donnée qui ont été entrée par l'utilisateur (dans les edittext) puis on redirige ces données vers la boite mail
             @Override
             public void onClick(View v) {
                 if (!email.getText().toString().isEmpty() && !pj_name.getText().toString().isEmpty() && !pj_description.getText().toString().isEmpty() && !deadline.getText().toString().isEmpty())

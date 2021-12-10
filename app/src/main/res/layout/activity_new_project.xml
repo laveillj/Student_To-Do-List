@@ -12,6 +12,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="1dp"
         android:foreground="@drawable/back"
+        android:drawableTint="?attr/colorButtonNormal"
         android:foregroundGravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +23,7 @@
         android:layout_width="59dp"
         android:layout_height="55dp"
         android:layout_marginEnd="1dp"
+        android:drawableTint="?attr/colorButtonNormal"
         android:foreground="@drawable/check_vector"
         android:foregroundGravity="center"
         android:onClick="validateNewProject"
@@ -35,7 +37,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:text="Add Project"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/returnButton_new_project"
         app:layout_constraintTop_toTopOf="@+id/validateButton_new_project" />
@@ -48,14 +49,12 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="10dp"
-        android:background="#E1E1E1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <Button
             android:id="@+id/button_addcollab"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -87,7 +86,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="10dp"
-        android:background="#ECEBEB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
@@ -96,7 +94,6 @@
             android:id="@+id/editProject_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
             android:hint="Project Description" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,7 +102,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Collaborator"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout" />
@@ -115,7 +111,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout" />
@@ -143,7 +138,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2" />
@@ -155,6 +149,8 @@
         android:layout_marginStart="15dp"
         android:ems="10"
         android:inputType="date"
+        android:hint="Entrer une date"
+        android:focusableInTouchMode="false"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/textView3" />
 
@@ -164,7 +160,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Deadline"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
@@ -178,7 +173,6 @@
         android:layout_marginEnd="10dp"
         android:foreground="@drawable/ic_baseline_color_lens_24"
         android:foregroundGravity="center"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout2" />
