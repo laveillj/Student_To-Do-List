@@ -103,6 +103,12 @@ public class NewProjectActivity extends AppCompatActivity {
     }
 
     public void validateNewProject(View view) {
+
+        if (pj_name.getText().toString().isEmpty() || deadline.getText().toString().isEmpty()) {
+            Toast.makeText(NewProjectActivity.this, "Please fill NAME and DEADLINE boxes", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         //En appuyant sur le bouton valider, nous enregistrons les différents variables déclaré par l'user puis allons vers la MainActivity
         Intent intent = new Intent(this, MainActivity.class);
 

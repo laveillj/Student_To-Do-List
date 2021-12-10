@@ -55,8 +55,6 @@ public class NewTaskActivity extends AppCompatActivity {
 
     }
 
-
-
     public void returnFromTask(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

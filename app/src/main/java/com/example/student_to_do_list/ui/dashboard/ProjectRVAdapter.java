@@ -39,6 +39,7 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
     @Override
     public void onBindViewHolder(ItemViewHolder2 holder, int position) {
         Project project = projectsList.get(position);
+        holder.bind(project);
     }
 
     @Override
@@ -48,13 +49,23 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
     }
 
     public class ItemViewHolder2 extends RecyclerView.ViewHolder {
-        TextView txt;
-        //TextView deadline;
+
+        private TextView title;
+        //private TextView description;
+        private TextView deadline;
+        private View subItem;
 
         public ItemViewHolder2(View itemView) {
             super(itemView);
-            txt = (TextView) itemView.findViewById(R.id.name_project);
-            //deadline = (TextView) itemView.findViewById(R.id.deadline_project);
+            title = (TextView) itemView.findViewById(R.id.name_project);
+            //description = (TextView) itemView.findViewById(R.id.task_sub_item_desc);
+            deadline = (TextView) itemView.findViewById(R.id.deadline_project_value);
+        }
+        private void bind(Project project) {
+
+            title.setText(project.getTitle());
+            //description.setText(project.getDescription());
+            deadline.setText(project.getDeadline());
         }
     }
 

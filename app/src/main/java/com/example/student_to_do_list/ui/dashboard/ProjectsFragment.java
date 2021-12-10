@@ -53,25 +53,18 @@ public class ProjectsFragment extends Fragment {
         // RV size doesn't depend on amount of content
         recyclerView.hasFixedSize();
 
-        // Set the RV item divider decoration.
-        // OptionalRVDividerItemDecoration works exactly the same as std DividerItemDecoration
-        recyclerView.addItemDecoration(
-                new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL)
-        );
-
-        /*Button clearTasks = (Button) view.findViewById(R.id.clearButton);
+        Button clearTasks = (Button) view.findViewById(R.id.clearProjectsButton);
         clearTasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "All tasks are cleared", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "All projects are cleared", Toast.LENGTH_SHORT).show();
                 //int deletedRows = tasksDb.delete(TasksContract.TasksEntry.TABLE_NAME, null, null);
-                db.deleteAllTasks();
-                tasksList = new ArrayList<>();
-                rvAdapter = new TasksRVAdapter(tasksList);
+                db.deleteAllProjects();
+                projectsList = new ArrayList<>();
+                rvAdapter = new ProjectRVAdapter(projectsList);
                 recyclerView.setAdapter(rvAdapter);
             }
-        });*/
-
+        });
         return view;
     }
 
