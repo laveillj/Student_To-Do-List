@@ -16,7 +16,10 @@ import java.util.Calendar;
 
 public class NewProjectActivity extends AppCompatActivity {
 
-    private static final String EXTRA_MESSAGE = "";
+    public static final String EXTRA_NAME = "N ";   //or "com.example.StudentToDoList.MESSAGE"
+    public static final String EXTRA_DESC = "Dc ";
+    public static final String EXTRA_DEADLINE = "Dd ";
+    public static final String EXTRA_TYPE = "Type ";
 
     EditText email;
     EditText pj_name;
@@ -94,6 +97,10 @@ public class NewProjectActivity extends AppCompatActivity {
         });
     }
 
+    public void returnFromTask(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
     public void validateNewProject(View view) {
         //En appuyant sur le bouton valider, nous enregistrons les différents variables déclaré par l'user puis allons vers la MainActivity
@@ -102,19 +109,21 @@ public class NewProjectActivity extends AppCompatActivity {
         //On va chercher les valeurs présent dans les cases EditText du layout "activity_new_project" et les attribuons à des variables.
         EditText editText_projectName = (EditText) findViewById(R.id.editProject_name);
         String projectName = editText_projectName.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, projectName);
-
-        EditText editText_Deadline = (EditText) findViewById(R.id.editDeadline);
-        String Deadline = editText_Deadline.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, Deadline);
+        intent.putExtra(EXTRA_NAME, projectName);
 
         EditText editText_projectDescription = (EditText) findViewById(R.id.editProject_description);
         String Project_description = editText_projectDescription.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, Project_description);
+        intent.putExtra(EXTRA_DESC, Project_description);
 
-        EditText editText_collaborator = (EditText) findViewById(R.id.editCollaboratorMail);
+        EditText editText_Deadline = (EditText) findViewById(R.id.editDeadline);
+        String Deadline = editText_Deadline.getText().toString();
+        intent.putExtra(EXTRA_DEADLINE, Deadline);
+
+        /*EditText editText_collaborator = (EditText) findViewById(R.id.editCollaboratorMail);
         String CollaboratorMail = editText_collaborator.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, CollaboratorMail);
+        intent.putExtra(EXTRA_MESSAGE, CollaboratorMail);*/
+
+        intent.putExtra(EXTRA_TYPE, "PROJECT");
 
         startActivity(intent);
     }
