@@ -16,6 +16,7 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/layout/project_card.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Student_To-Do-List/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2453125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/check_vector.xml" value="0.3828125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
@@ -29,7 +30,7 @@
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_notifications.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_projects.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_tasks.xml" value="0.1" />
-        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_tasks_item.xml" value="0.6833810888252149" />
+        <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/fragment_tasks_item.xml" value="0.25" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/project_card.xml" value="0.1" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/layout/settings_item_test.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jryla/AndroidStudioProjects/StudentToDoList/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
