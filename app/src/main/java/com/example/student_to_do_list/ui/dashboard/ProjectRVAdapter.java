@@ -56,6 +56,7 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
                 mContext.startActivity(intent);
             }
         });
+
         holder.bind(project);
     }
 
