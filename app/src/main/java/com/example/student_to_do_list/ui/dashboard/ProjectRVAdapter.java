@@ -3,12 +3,16 @@ package com.example.student_to_do_list.ui.dashboard;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.student_to_do_list.Project;
+import com.example.student_to_do_list.ProjectViewContentActivity;
 import com.example.student_to_do_list.R;
 import com.example.student_to_do_list.Task;
 
@@ -26,8 +30,12 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
 
     //List<String> dataList;
     private List<Project> projectsList;
+    private Context mContext;
 
-    public ProjectRVAdapter(List<Project> projectsList) { this.projectsList = projectsList; }
+    public ProjectRVAdapter(List<Project> projectsList, Context context) {
+        this.projectsList = projectsList;
+        mContext = context;
+    }
 
     @Override
     public ItemViewHolder2 onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,7 +46,16 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
 
     @Override
     public void onBindViewHolder(ItemViewHolder2 holder, int position) {
-        Project project = projectsList.get(position);
+        Project project = projectsList.get(position); //Récupère la position lié à l'item présent dans la recyclerview
+        holder.project_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Lorsqu'on clique sur un project_card, on genère un nouvel intent vers projectviewcontentActivity
+                Intent intent = new Intent(mContext, ProjectViewContentActivity.class);
+                intent.putExtra("PROJECT_ID",project.getId()); //Nous récupérons l'ID de la database associé à l'item cliqué et nous ferons un post traitement dans le ProjectViewContentActivity pour afficher les informations nécessaires pour le projet en question
+                mContext.startActivity(intent);
+            }
+        });
         holder.bind(project);
     }
 
@@ -54,10 +71,12 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
         //private TextView description;
         private TextView deadline;
         private View subItem;
+        RelativeLayout project_layout;
 
         public ItemViewHolder2(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.name_project);
+            project_layout = itemView.findViewById(R.id.layout_project_card);
             //description = (TextView) itemView.findViewById(R.id.task_sub_item_desc);
             deadline = (TextView) itemView.findViewById(R.id.deadline_project_value);
         }

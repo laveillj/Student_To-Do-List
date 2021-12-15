@@ -16,6 +16,7 @@
             app:cardCornerRadius="10dp">
 
             <RelativeLayout
+                android:id="@+id/layout_project_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -25,9 +26,10 @@
                     android:id="@+id/name_project"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
+                    android:hint="Project_name"
                     android:textColor="@color/black"
                     android:textFontWeight="1000"
-                    android:fontFamily="@font/inter_bold"
                     android:textSize="20dp" />
 
                 <LinearLayout

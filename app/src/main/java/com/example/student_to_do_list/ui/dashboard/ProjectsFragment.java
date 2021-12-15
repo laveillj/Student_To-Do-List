@@ -1,5 +1,6 @@
 package com.example.student_to_do_list.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +20,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.student_to_do_list.DatabaseHelper;
+import com.example.student_to_do_list.NewProjectActivity;
 import com.example.student_to_do_list.Project;
 import com.example.student_to_do_list.R;
+import com.example.student_to_do_list.RVItemTouchListener;
 import com.example.student_to_do_list.Task;
 import com.example.student_to_do_list.databinding.FragmentProjectsBinding;
 import com.example.student_to_do_list.ui.home.TasksRVAdapter;
@@ -42,7 +45,7 @@ public class ProjectsFragment extends Fragment {
         this.updateProjectsFromDb();
 
         //create RV adapter from data (fruits strings)
-        rvAdapter = new ProjectRVAdapter(projectsList);
+        rvAdapter = new ProjectRVAdapter(projectsList, getContext());
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_projects);
 
@@ -61,7 +64,7 @@ public class ProjectsFragment extends Fragment {
                 //int deletedRows = tasksDb.delete(TasksContract.TasksEntry.TABLE_NAME, null, null);
                 db.deleteAllProjects();
                 projectsList = new ArrayList<>();
-                rvAdapter = new ProjectRVAdapter(projectsList);
+                rvAdapter = new ProjectRVAdapter(projectsList, getContext());
                 recyclerView.setAdapter(rvAdapter);
             }
         });
@@ -75,7 +78,7 @@ public class ProjectsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         this.updateProjectsFromDb();
-        rvAdapter = new ProjectRVAdapter(projectsList);
+        rvAdapter = new ProjectRVAdapter(projectsList, getContext());
         recyclerView.setAdapter(rvAdapter);
     }
 

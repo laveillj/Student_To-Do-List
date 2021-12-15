@@ -24,7 +24,7 @@
         android:layout_marginBottom="66dp"
         android:foreground="@drawable/add_logo"
         android:onClick="addNewProject"
-        app:cornerRadius="30dp"/>
+        app:cornerRadius="30dp" />
 
     <Button
         android:id="@+id/clearProjectsButton"
