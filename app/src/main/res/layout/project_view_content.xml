@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,16 +15,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/validateButton_new_project"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="59dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="1dp"
+        android:foreground="@drawable/edit"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/Name_project_VC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:hint="Nom Project"
+        android:layout_marginTop="10dp"
+        android:text="Projet :"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/returnButton_VC" />
+
+    <TextView
+        android:id="@+id/Name_project_VC_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:hint="Project_Name_value"
+        android:textSize="15sp"
+        android:fontFamily="@font/inter_light"
+        app:layout_constraintBottom_toBottomOf="@+id/Name_project_VC"
+        app:layout_constraintStart_toEndOf="@+id/Name_project_VC" />
 
     <TextView
         android:id="@+id/Deadline_VC"
@@ -31,21 +54,77 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:hint="Deadline"
+        android:text="Deadline :"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Name_project_VC" />
 
     <TextView
+        android:id="@+id/Deadline_VC_Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:hint="Deadline_value"
+        android:textSize="15sp"
+        android:fontFamily="@font/inter_light"
+        app:layout_constraintBottom_toBottomOf="@+id/Deadline_VC"
+        app:layout_constraintStart_toEndOf="@+id/Deadline_VC" />
+
+    <TextView
         android:id="@+id/Description_title_VC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:text="Description :"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Deadline_VC" />
+
+    <TextView
+        android:id="@+id/Description_title_VC_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter_light"
+        android:hint="Description_project_value"
+        android:ellipsize="end"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Description_title_VC" />
+
+    <TextView
+        android:id="@+id/Collab_VC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Collaborator :"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/Description_title_VC_value"
+        app:layout_constraintTop_toBottomOf="@+id/Description_title_VC_value" />
+
+    <TextView
+        android:id="@+id/Task_VC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:text="Description"
+        android:text="Task :"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/Deadline_VC" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Collab_VC" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="409dp"
+        android:layout_height="438dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Task_VC" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
