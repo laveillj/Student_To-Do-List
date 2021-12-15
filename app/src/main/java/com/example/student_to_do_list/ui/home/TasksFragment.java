@@ -67,7 +67,7 @@ public class TasksFragment extends Fragment {
                 new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL)
         );
 
-        Button clearTasks = (Button) view.findViewById(R.id.clearButton);
+        Button clearTasks = (Button) view.findViewById(R.id.clearTasksButton);
         clearTasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
