@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.student_to_do_list.R;
@@ -62,6 +63,7 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
         private TextView description;
         private TextView deadline;
         private View subItem;
+        private Button tasks_status_button;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
@@ -69,6 +71,9 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
             description = (TextView) itemView.findViewById(R.id.task_sub_item_desc);
             deadline = (TextView) itemView.findViewById(R.id.task_sub_item_deadline);
             subItem = itemView.findViewById(R.id.task_sub_item);
+            tasks_status_button = itemView.findViewById(R.id.task_item_status_button);
+
+
         }
 
         private void bind(Task task) {

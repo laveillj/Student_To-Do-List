@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.BaseColumns;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -99,6 +102,24 @@ public class TasksFragment extends Fragment {
         //### Tasks Database init ###
         db = new DatabaseHelper(getContext());
         tasksList = db.getAllTasks();
+    }
+
+    private void deleteItem(View rowView, final long position) {
+
+        Animation anim = AnimationUtils.loadAnimation(requireContext(),
+                android.R.anim.slide_out_right);
+        anim.setDuration(300);
+        rowView.startAnimation(anim);
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                db = new DatabaseHelper(getContext());
+                db.deleteTask(position);  //Remove the current content from the array
+                rvAdapter = new TasksRVAdapter(tasksList);
+                recyclerView.setAdapter(rvAdapter);
+            }
+
+        }, anim.getDuration());
     }
 
 }
