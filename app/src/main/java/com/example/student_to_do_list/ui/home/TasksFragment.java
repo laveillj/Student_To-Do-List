@@ -35,8 +35,6 @@ import java.util.List;
 
 public class TasksFragment extends Fragment {
 
-    private SQLiteDatabase tasksDb;
-    //public ArrayList<String> tasksList = new ArrayList<>();
     public List<Task> tasksList = new ArrayList<>();
     public RecyclerView recyclerView;
     public TasksRVAdapter rvAdapter;
@@ -46,11 +44,9 @@ public class TasksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tasks, container, false);
 
-        this.updateTasksFromDb();
-
     //### RECYCLER VIEW ###
         //create RV adapter from data (fruits strings)
-        rvAdapter = new TasksRVAdapter(tasksList);
+        rvAdapter = new TasksRVAdapter(tasksList, getContext());
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_tasks);
 
@@ -70,18 +66,32 @@ public class TasksFragment extends Fragment {
                 new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL)
         );
 
+        rvAdapter.setOnItemClickListener(new TasksRVAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Log.d("test","Clicked item at position number " + tasksList.get(position) + " in RecyclerView");
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
+                Log.d("test","Deleted item at position number " + tasksList.get(position) + " in RecyclerView");
+                View v = recyclerView.findViewHolderForAdapterPosition(position).itemView;
+                deleteItem(v, tasksList.get(position).getId());
+            }
+        });
+
         Button clearTasks = (Button) view.findViewById(R.id.clearTasksButton);
         clearTasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "All tasks are cleared", Toast.LENGTH_SHORT).show();
-                //int deletedRows = tasksDb.delete(TasksContract.TasksEntry.TABLE_NAME, null, null);
                 db.deleteAllTasks();
-                tasksList = new ArrayList<>();
-                rvAdapter = new TasksRVAdapter(tasksList);
-                recyclerView.setAdapter(rvAdapter);
+                updateTasksFromDb(db);
+                //rvAdapter = new TasksRVAdapter(tasksList);
+                //recyclerView.setAdapter(rvAdapter);
             }
         });
+
         return view;
     }
 
@@ -93,19 +103,31 @@ public class TasksFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        this.updateTasksFromDb();
-        rvAdapter = new TasksRVAdapter(tasksList);
-        recyclerView.setAdapter(rvAdapter);
+        db = new DatabaseHelper(getContext());
+        this.updateTasksFromDb(db);
     }
 
-    public void updateTasksFromDb() {
-        //### Tasks Database init ###
+    public void updateTasksFromDb(DatabaseHelper pDB) {
+        //Get tasks from database
+        List<Task> newList = pDB.getAllTasks();
+
+        if(newList.size() != tasksList.size()) {
+            tasksList.clear();
+            tasksList.addAll(newList);
+            rvAdapter.notifyDataSetChanged();  //Notify adapter
+        }
+    }
+
+    private void deleteItemSimple(final long position) {
+        //db = new DatabaseHelper(getContext());
         db = new DatabaseHelper(getContext());
-        tasksList = db.getAllTasks();
+        db.deleteTask(position);  //Remove the current content from the array
+        this.updateTasksFromDb(db);
     }
 
     private void deleteItem(View rowView, final long position) {
-
+        Button task_status_button = rowView.findViewById(R.id.task_item_status_button);
+        task_status_button.setForeground(getContext().getResources().getDrawable(R.drawable.task_status_1));
         Animation anim = AnimationUtils.loadAnimation(requireContext(),
                 android.R.anim.slide_out_right);
         anim.setDuration(300);
@@ -115,8 +137,7 @@ public class TasksFragment extends Fragment {
             public void run() {
                 db = new DatabaseHelper(getContext());
                 db.deleteTask(position);  //Remove the current content from the array
-                rvAdapter = new TasksRVAdapter(tasksList);
-                recyclerView.setAdapter(rvAdapter);
+                updateTasksFromDb(db);
             }
 
         }, anim.getDuration());

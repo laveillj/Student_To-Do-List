@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     long project_id = db.createProject(project);
                     break;
             }
+            getIntent().removeExtra(NewTaskActivity.EXTRA_NAME);
         }
 
         /*TasksContract.TasksDbHelper tasksDbHelper = new TasksContract.TasksDbHelper(this);

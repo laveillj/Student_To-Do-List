@@ -39,8 +39,6 @@ public class ProjectsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_projects, container, false);
 
-        this.updateProjectsFromDb();
-
         //create RV adapter from data (fruits strings)
         rvAdapter = new ProjectRVAdapter(projectsList);
 
@@ -60,9 +58,7 @@ public class ProjectsFragment extends Fragment {
                 Toast.makeText(getActivity(), "All projects are cleared", Toast.LENGTH_SHORT).show();
                 //int deletedRows = tasksDb.delete(TasksContract.TasksEntry.TABLE_NAME, null, null);
                 db.deleteAllProjects();
-                projectsList = new ArrayList<>();
-                rvAdapter = new ProjectRVAdapter(projectsList);
-                recyclerView.setAdapter(rvAdapter);
+                updateProjectsFromDb(db);
             }
         });
         return view;
@@ -74,14 +70,18 @@ public class ProjectsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        this.updateProjectsFromDb();
-        rvAdapter = new ProjectRVAdapter(projectsList);
-        recyclerView.setAdapter(rvAdapter);
+        db = new DatabaseHelper(getContext());
+        this.updateProjectsFromDb(db);
     }
 
-    public void updateProjectsFromDb() {
-        //### Tasks Database init ###
-        db = new DatabaseHelper(getContext());
-        projectsList = db.getAllProjects();
+    public void updateProjectsFromDb(DatabaseHelper pDB) {
+        //Get projects from database
+        List<Project> newList = pDB.getAllProjects();
+
+        if(newList.size() != projectsList.size()) {
+            projectsList.clear();
+            projectsList.addAll(newList);
+            rvAdapter.notifyDataSetChanged();  //Notify adapter
+        }
     }
 }
