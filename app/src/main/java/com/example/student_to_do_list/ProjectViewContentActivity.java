@@ -29,6 +29,14 @@ public class ProjectViewContentActivity extends AppCompatActivity {
         String project_id_string = "not set";
         Log.d(TAG, "project_content_debug : creating activity for project view content");
         setContentView(R.layout.activity_projectviewcontent);
+
+        // Define ActionBar
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(getResources().getColor(R.color.theme_gold));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
         Intent intent = getIntent();
 
         if(intent.hasExtra("PROJECT_ID")) {
@@ -42,14 +50,6 @@ public class ProjectViewContentActivity extends AppCompatActivity {
             TextView VC_project_description = findViewById(R.id.Description_title_VC_value);
             TextView VC_project_deadline = findViewById(R.id.Deadline_VC_Value);
 
-        // Define ActionBar
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(getResources().getColor(R.color.theme_gold));
-        actionBar.setBackgroundDrawable(colorDrawable);
-
-        getIncomingIntent();
             VC_project_name.setText(project.getTitle());
             VC_project_description.setText(project.getDescription());
             VC_project_deadline.setText(project.getDeadline());
