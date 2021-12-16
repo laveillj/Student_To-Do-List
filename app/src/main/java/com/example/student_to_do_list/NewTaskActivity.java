@@ -1,10 +1,12 @@
 package com.example.student_to_do_list;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -27,6 +29,12 @@ public class NewTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
 
+        // Define ActionBar
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(getResources().getColor(R.color.theme_gold));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         etDate = findViewById(R.id.editDate_new_task);
         Calendar calendar = Calendar.getInstance();

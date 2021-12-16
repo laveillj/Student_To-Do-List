@@ -1,6 +1,7 @@
 package com.example.student_to_do_list;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +42,14 @@ public class ProjectViewContentActivity extends AppCompatActivity {
             TextView VC_project_description = findViewById(R.id.Description_title_VC_value);
             TextView VC_project_deadline = findViewById(R.id.Deadline_VC_Value);
 
+        // Define ActionBar
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(getResources().getColor(R.color.theme_gold));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
+        getIncomingIntent();
             VC_project_name.setText(project.getTitle());
             VC_project_description.setText(project.getDescription());
             VC_project_deadline.setText(project.getDeadline());

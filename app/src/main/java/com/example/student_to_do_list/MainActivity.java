@@ -3,20 +3,23 @@ package com.example.student_to_do_list;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
-import com.example.student_to_do_list.ui.dashboard.ProjectRVAdapter;
 import com.example.student_to_do_list.ui.home.TasksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 
 import com.example.student_to_do_list.databinding.ActivityMainBinding;
@@ -33,6 +36,17 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Define ActionBar object
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        // Define ColorDrawable object and parse color
+        // using parseColor method
+        // with color hash code as its parameter
+        ColorDrawable colorDrawable
+                = new ColorDrawable(getResources().getColor(R.color.theme_gold));
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -57,15 +71,18 @@ public class MainActivity extends AppCompatActivity {
         String strDeadline = intent.getStringExtra(NewTaskActivity.EXTRA_DEADLINE);
         String strType = intent.getStringExtra(NewTaskActivity.EXTRA_TYPE);
 
+
         // ### DATA BASE ###
         db = new DatabaseHelper(getApplicationContext());
         if(strName != null) {
             switch(strType){
                 case "TASK":
-                    Task task = new Task(strName, strDesc, strDeadline);
+                    Log.d(" ### ### ", "Name for new TASK: " + strName);
+                    Task task = new Task(strName, strDesc, strDeadline, 0);
                     long task_id = db.createTask(task);
                     break;
                 case "PROJECT":
+                    Log.d(" ### ", "Name for new PROJECT: " + strName);
                     Project project = new Project(strName, strDesc, strDeadline);
                     long project_id = db.createProject(project);
                     break;
@@ -97,19 +114,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NewProjectActivity.class); //On déclare l'intention d'aller vers cette activity NewProjectActivity
         startActivity(intent);
     }
-    /*
-    private void setAdapter() {
-        setOnClickListener();
-    }
-    private void setOnClickListener() {
-        listener = new ProjectRVAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View v, int position) {
-                Intent intent = new Intent(getApplicationContext(), ProjectViewContentActivity.class);
-                intent.putExtra("PROJECT_ID",project.getId()); //Nous récupérons l'ID de la database associé à l'item cliqué et nous ferons un post traitement dans le ProjectViewContentActivity pour afficher les informations nécessaires pour le projet en question
-            }
-        };
-    }*/
-
 
 }
