@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_project_view_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/content_topbar_VC_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/returnButton_VC_edit"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="59dp"
+            android:layout_height="55dp"
+            android:foreground="@drawable/back"
+            android:foregroundGravity="center"
+            android:onClick="returnFromTask" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_regular"
+            android:text="Project details"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/validateButton_VC_edit"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="59dp"
+            android:layout_height="55dp"
+            android:foreground="@drawable/check_vector"
+            android:foregroundGravity="center"
+            android:onClick="validateModifyProject" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#747474"/>
+
+    <!--TextView
+        android:id="@+id/Name_project_VC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Projet :"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/returnButton_VC" /-->
+
+    <EditText
+        android:id="@+id/Name_project_VC_value_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:hint="Enter Name"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:fontFamily="@font/inter_bold"
+        android:textCursorDrawable="@color/black"/>
+
+    <LinearLayout
+        android:id="@+id/content_deadline_VC_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Deadline_VC_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deadline :"
+            android:drawableLeft="@drawable/date"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/Deadline_VC_Value_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="Enter deadline"
+            android:inputType="date"
+            android:ems="10"
+            android:focusableInTouchMode="false"
+            android:textSize="20sp"
+            android:fontFamily="@font/inter_light"
+            android:onClick="modifyDeadline"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content_description_VC_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Description_title_VC_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description :"
+            android:fontFamily="@font/inter_bold"
+            android:drawableLeft="@drawable/description"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Description_title_VC_value_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/inter_light"
+                android:hint="Description of project"
+                android:textCursorDrawable="@color/black"
+                android:textSize="16sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content_collab_VC_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/Collab_VC_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Collaborators of the Project :"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/add_collaborator"
+            android:fontFamily="@font/inter_bold"
+            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_marginTop="6dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/Collab_VC_value_edit"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="10dp"
+                android:hint="E-mail"
+                android:fontFamily="@font/inter_light"
+                android:textSize="16sp"
+                android:textCursorDrawable="@color/black"/>
+
+            <Button
+                android:id="@+id/button_addcollab_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="Send"
+                android:textColor="@color/black"
+                android:onClick="inputmodifyEmail"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="#747474"/>
+
+</LinearLayout>

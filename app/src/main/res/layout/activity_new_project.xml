@@ -88,7 +88,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button_addcollab"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:textCursorDrawable="@color/black"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -107,7 +108,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill"
-                android:hint="Project Description" />
+                android:hint="Project Description"
+                android:textCursorDrawable="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -149,7 +151,8 @@
                 android:id="@+id/editProject_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Project Name" />
+                android:hint="Project Name"
+                android:textCursorDrawable="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
