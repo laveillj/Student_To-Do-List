@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+
+import com.example.student_to_do_list.ui.dashboard.ProjectsFragment;
 
 import java.util.Calendar;
 
@@ -20,6 +23,8 @@ public class NewTaskActivity extends AppCompatActivity {
     public static final String EXTRA_DESC = "Dc ";
     public static final String EXTRA_DEADLINE = "Dd ";
     public static final String EXTRA_TYPE = "Type ";
+    private String strID;
+    private boolean underProject;
 
     EditText etDate;
     DatePickerDialog.OnDateSetListener setListener;
@@ -60,16 +65,32 @@ public class NewTaskActivity extends AppCompatActivity {
             }
         });
 
+        Intent in = getIntent();
+        strID = in.getStringExtra("PROJECT_ID");
+        Log.d("###", "PROJECT_ID from intent: "+ strID+"0");
+        if(strID.equals("0"))
+            this.underProject = false;
+        else
+            this.underProject = true;
 
+        Log.d("###", "underProject boolean: "+ underProject);
     }
 
     public void returnFromTask(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent;
+        if(underProject)
+            intent = new Intent(this, ProjectViewContentActivity.class).putExtra(ProjectsFragment.EXTRA_PROJECT_ID, strID);
+        else
+            intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     public void validateNewTask(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent;
+        if(underProject)
+            intent = new Intent(this, ProjectViewContentActivity.class).putExtra(ProjectsFragment.EXTRA_PROJECT_ID, strID);
+        else
+            intent = new Intent(this, MainActivity.class);
         EditText taskName = (EditText) findViewById(R.id.task_name);
         EditText taskDesc = (EditText) findViewById(R.id.task_description);
         EditText taskDeadline = (EditText) findViewById(R.id.editDate_new_task);

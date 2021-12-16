@@ -77,36 +77,20 @@ public class MainActivity extends AppCompatActivity {
         if(strName != null) {
             switch(strType){
                 case "TASK":
-                    Log.d(" ### ### ", "Name for new TASK: " + strName);
                     Task task = new Task(strName, strDesc, strDeadline, 0);
                     long task_id = db.createTask(task);
                     break;
                 case "PROJECT":
-                    Log.d(" ### ", "Name for new PROJECT: " + strName);
                     Project project = new Project(strName, strDesc, strDeadline);
                     long project_id = db.createProject(project);
                     break;
             }
             getIntent().removeExtra(NewTaskActivity.EXTRA_NAME);
         }
-
-        /*TasksContract.TasksDbHelper tasksDbHelper = new TasksContract.TasksDbHelper(this);
-
-        // Gets the data repository in write mode
-        SQLiteDatabase tasksDb = tasksDbHelper.getWritableDatabase();
-
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(TasksContract.TasksEntry.COLUMN_NAME_TITLE, strTaskName);
-        values.put(TasksContract.TasksEntry.COLUMN_NAME_DESCRIPTION, strTaskDesc);
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId = tasksDb.insert(TasksContract.TasksEntry.TABLE_NAME, null, values);*/
-
     }
 
     public void addNewTask(View view) {
-        Intent intent = new Intent(this, NewTaskActivity.class);
+        Intent intent = new Intent(this, NewTaskActivity.class).putExtra("PROJECT_ID", "0");
         startActivity(intent);
     }
 

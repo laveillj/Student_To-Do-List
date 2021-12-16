@@ -70,6 +70,7 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
     public static class ItemViewHolder extends RecyclerView.ViewHolder { //to become static??
 
         private TextView title;
+        private TextView task_project;
         private TextView description;
         private TextView deadline;
         private View subItem;
@@ -78,6 +79,7 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
         public ItemViewHolder(View itemView, final OnItemClickListener pListener, Context pContext) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.tasks_item_title);
+            task_project = (TextView) itemView.findViewById(R.id.tasks_item_project);
             description = (TextView) itemView.findViewById(R.id.task_sub_item_desc);
             deadline = (TextView) itemView.findViewById(R.id.task_sub_item_deadline);
             subItem = itemView.findViewById(R.id.task_sub_item);
@@ -104,6 +106,10 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
             title.setText(task.getTitle());
             description.setText(task.getDescription());
             deadline.setText("\nDeadline: " + task.getDeadline());
+            long projectID = task.getProjectId();
+            if(projectID != 0)
+                task_project.setText("P" + projectID);
+
         }
     }
 

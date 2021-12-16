@@ -65,9 +65,22 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
                     android:backgroundTint="#00FFFFFF"
                     app:srcCompat="@drawable/setings_points" />
 
+                <TextView
+                    android:id="@+id/id_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="2dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:hint="P0"
+                    android:textColor="@color/theme_gold"
+                    android:textSize="18dp" />
 
             </RelativeLayout>
 

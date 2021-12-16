@@ -11,14 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- <CheckBox
-            android:id="@+id/task_item_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:button="@drawable/task_status_selector"
-            android:checked="false"
-            android:visibility="visible" /> -->
         <Button
             android:id="@+id/task_item_status_button"
             style="?android:attr/borderlessButtonStyle"
@@ -36,10 +28,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/inter_regular"
+            android:textColor="@color/black"
             android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tasks_item_project"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/theme_gold"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/task_item_arrow"
