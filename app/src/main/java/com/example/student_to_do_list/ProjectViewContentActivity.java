@@ -35,6 +35,7 @@ public class ProjectViewContentActivity extends AppCompatActivity {
     public TasksRVAdapter rvAdapter;
     DatabaseHelper db;
     private Project project;
+    Button edit ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +110,16 @@ public class ProjectViewContentActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
         this.updateTasksFromDb(db);
+
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ModifyProjectActivity.class);
+                intent.putExtra("MPROJECT_ID", strID);
+                startActivity(intent);
+            }
+        });
 
     }
 
