@@ -79,7 +79,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_addcollab"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textCursorDrawable="@color/black"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -98,7 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
-            android:hint="Project Description" />
+            android:hint="Project Description"
+            android:textCursorDrawable="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -107,8 +109,8 @@
         android:layout_height="wrap_content"
         android:text="Collaborator"
         android:drawableLeft="@drawable/add_collaborator"
-        android:textColor="@color/black"
         android:fontFamily="@font/inter_bold"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout" />
@@ -118,9 +120,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
-        android:fontFamily="@font/inter_bold"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:fontFamily="@font/inter_bold"
         android:drawableLeft="@drawable/description"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout" />
@@ -140,7 +142,8 @@
             android:id="@+id/editProject_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Project Name" />
+            android:hint="Project Name"
+            android:textCursorDrawable="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -174,9 +177,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:drawableLeft="@drawable/date"
+        android:fontFamily="@font/inter_bold"
         android:textColor="@color/black"
         android:text="Deadline"
-        android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />

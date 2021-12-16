@@ -31,7 +31,6 @@ public class NewProjectActivity extends AppCompatActivity {
     String mail_content;
     String mail_subject;
 
-    EditText etDate;
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -52,13 +51,13 @@ public class NewProjectActivity extends AppCompatActivity {
         deadline = findViewById(R.id.editDeadline);
         buttonSend = findViewById(R.id.button_addcollab);
 
-        etDate = findViewById(R.id.editDeadline);
+        deadline = findViewById(R.id.editDeadline);
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        etDate.setOnClickListener(new View.OnClickListener() {
+        deadline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -67,7 +66,7 @@ public class NewProjectActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         month = month+1;
                         String date = dayOfMonth+"/"+month+"/"+year;
-                        etDate.setText(date);
+                        deadline.setText(date);
                     }
                 },year,month,day);
                 datePickerDialog.show();

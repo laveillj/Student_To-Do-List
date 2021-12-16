@@ -35,7 +35,7 @@ import java.util.List;
 
 public class ProjectsFragment extends Fragment {
 
-    public static final String EXTRA_PROJECT_ID = "PROJECT_ID ";
+    public static final String EXTRA_PROJECT_ID = "PROJECT_ID";
     public List<Project> projectsList = new ArrayList<>();
     public RecyclerView recyclerView;
     public ProjectRVAdapter rvAdapter;
