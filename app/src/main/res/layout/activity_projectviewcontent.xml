@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_project_view_activity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/returnButton_VC"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="59dp"
-        android:layout_height="55dp"
-        android:foreground="@drawable/back"
-        android:foregroundGravity="center"
-        android:onClick="returnFromTask"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/content_topbar_VC"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/validateButton_new_project"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="59dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="1dp"
-        android:foreground="@drawable/edit"
-        android:foregroundGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/returnButton_VC"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="59dp"
+            android:layout_height="55dp"
+            android:foreground="@drawable/back"
+            android:foregroundGravity="center"
+            android:onClick="returnFromTask" />
 
-    <TextView
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_regular"
+            android:text="Project details"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/editButton_VC"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="59dp"
+            android:layout_height="55dp"
+            android:foreground="@drawable/edit"
+            android:foregroundGravity="center" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#747474"/>
+
+    <!--TextView
         android:id="@+id/Name_project_VC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,95 +61,134 @@
         android:text="Projet :"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/returnButton_VC" />
+        app:layout_constraintTop_toBottomOf="@+id/returnButton_VC" /-->
 
     <TextView
         android:id="@+id/Name_project_VC_value"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
         android:hint="Project_Name_value"
-        android:textSize="15sp"
-        android:fontFamily="@font/inter_light"
-        app:layout_constraintBottom_toBottomOf="@+id/Name_project_VC"
-        app:layout_constraintStart_toEndOf="@+id/Name_project_VC" />
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:fontFamily="@font/inter_bold" />
 
-    <TextView
-        android:id="@+id/Deadline_VC"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/content_deadline_VC"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:text="Deadline :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Name_project_VC" />
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/Deadline_VC_Value"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/Deadline_VC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deadline :"
+            android:fontFamily="@font/inter_regular"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/Deadline_VC_Value"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="Deadline_value"
+            android:textSize="20sp"
+            android:fontFamily="@font/inter_light" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content_description_VC"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:hint="Deadline_value"
-        android:textSize="15sp"
-        android:fontFamily="@font/inter_light"
-        app:layout_constraintBottom_toBottomOf="@+id/Deadline_VC"
-        app:layout_constraintStart_toEndOf="@+id/Deadline_VC" />
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/Description_title_VC"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/Description_title_VC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description :"
+            android:fontFamily="@font/inter_regular"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/Description_title_VC_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/inter_light"
+            android:hint="Description_project_value"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content_collab_VC"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="10dp"
-        android:text="Description :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Deadline_VC" />
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/Collab_VC"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Collaborators of the Project :"
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/Collab_VC_value"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="(no collaborators for this project)"
+            android:fontFamily="@font/inter_light"
+            android:textSize="16sp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/Description_title_VC_value"
-        android:layout_width="wrap_content"
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="#747474"/>
+
+    <LinearLayout
+        android:id="@+id/content_tasks_VC"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="fill"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/inter_light"
-        android:hint="Description_project_value"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Description_title_VC" />
+        android:layout_marginTop="14dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tasks_VC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="26dp"
+            android:text="Tasks to be done :"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/Collab_VC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Collaborator :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/Description_title_VC_value"
-        app:layout_constraintTop_toBottomOf="@+id/Description_title_VC_value" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_tasks_under_VC"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="1dp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/Task_VC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:text="Task :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Collab_VC" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="438dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Task_VC" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
