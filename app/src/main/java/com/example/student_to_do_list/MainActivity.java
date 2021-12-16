@@ -115,4 +115,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void modifyProject(View view) {
+        Intent intent = new Intent(this, ModifyProjectActivity.class); //On déclare l'intention d'aller vers cette activity NewProjectActivity
+        startActivity(intent);
+    }
+
 }
