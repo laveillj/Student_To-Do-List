@@ -81,7 +81,7 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
             title = (TextView) itemView.findViewById(R.id.tasks_item_title);
             task_project = (TextView) itemView.findViewById(R.id.tasks_item_project);
             description = (TextView) itemView.findViewById(R.id.task_sub_item_desc);
-            deadline = (TextView) itemView.findViewById(R.id.task_sub_item_deadline);
+            deadline = (TextView) itemView.findViewById(R.id.task_sub_item_deadline_value);
             subItem = itemView.findViewById(R.id.task_sub_item);
             task_status_button = itemView.findViewById(R.id.task_item_status_button);
 
@@ -105,7 +105,7 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
 
             title.setText(task.getTitle());
             description.setText(task.getDescription());
-            deadline.setText("\nDeadline: " + task.getDeadline());
+            deadline.setText(task.getDeadline());
             long projectID = task.getProjectId();
             if(projectID != 0)
                 task_project.setText("P" + projectID);

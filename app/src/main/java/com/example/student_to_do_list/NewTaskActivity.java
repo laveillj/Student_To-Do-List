@@ -101,7 +101,6 @@ public class NewTaskActivity extends AppCompatActivity {
         else
             intent = new Intent(this, MainActivity.class);
 
-        Intent intent = new Intent(this, MainActivity.class);
         EditText taskName = (EditText) findViewById(R.id.task_name);
         EditText taskDesc = (EditText) findViewById(R.id.task_description);
         EditText taskDeadline = (EditText) findViewById(R.id.editDate_new_task);
