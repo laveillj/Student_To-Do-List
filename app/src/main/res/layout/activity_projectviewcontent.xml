@@ -91,7 +91,6 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/inter_light"
         android:hint="Description_project_value"
-        android:ellipsize="end"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Description_title_VC" />
