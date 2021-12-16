@@ -76,7 +76,7 @@ public class TasksFragment extends Fragment {
             public void onDeleteClick(int position) {
                 Log.d("test","Deleted item at position number " + tasksList.get(position) + " in RecyclerView");
                 View v = recyclerView.findViewHolderForAdapterPosition(position).itemView;
-                deleteItem(v, tasksList.get(position).getId());
+                deleteItem(v, tasksList.get(position).getId(), position);
             }
         });
 
@@ -125,7 +125,7 @@ public class TasksFragment extends Fragment {
         this.updateTasksFromDb(db);
     }
 
-    private void deleteItem(View rowView, final long position) {
+    private void deleteItem(View rowView, final long id, int position) {
         Button task_status_button = rowView.findViewById(R.id.task_item_status_button);
         task_status_button.setForeground(getContext().getResources().getDrawable(R.drawable.task_status_1));
         Animation anim = AnimationUtils.loadAnimation(requireContext(),
@@ -136,8 +136,9 @@ public class TasksFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 db = new DatabaseHelper(getContext());
-                db.deleteTask(position);  //Remove the current content from the array
+                db.deleteTask(id);  //Remove the current content from the array
                 updateTasksFromDb(db);
+                task_status_button.setForeground(getContext().getResources().getDrawable(R.drawable.task_status_0));
             }
 
         }, anim.getDuration());
