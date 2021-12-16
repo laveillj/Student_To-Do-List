@@ -2,6 +2,7 @@ package com.example.student_to_do_list.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.student_to_do_list.DatabaseHelper;
 import com.example.student_to_do_list.NewProjectActivity;
 import com.example.student_to_do_list.Project;
+import com.example.student_to_do_list.ProjectViewContentActivity;
 import com.example.student_to_do_list.R;
 import com.example.student_to_do_list.RVItemTouchListener;
 import com.example.student_to_do_list.Task;
@@ -53,6 +55,17 @@ public class ProjectsFragment extends Fragment {
         recyclerView.setAdapter(rvAdapter);
         // RV size doesn't depend on amount of content
         recyclerView.hasFixedSize();
+
+        rvAdapter.setOnItemClickListener(new ProjectRVAdapter.OnProjectClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Project project = projectsList.get(position);
+                Log.d(" ### ", "Project got at position: " + position);
+                Intent intent = new Intent(getActivity(), ProjectViewContentActivity.class);
+                intent.putExtra("PROJECT_ID",project.getId()); //Nous récupérons l'ID de la database associé à l'item cliqué et nous ferons un post traitement dans le ProjectViewContentActivity pour afficher les informations nécessaires pour le projet en question
+                startActivity(intent);
+            }
+        });
 
         Button clearTasks = (Button) view.findViewById(R.id.clearProjectsButton);
         clearTasks.setOnClickListener(new View.OnClickListener() {

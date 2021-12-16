@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import com.example.student_to_do_list.ui.dashboard.ProjectRVAdapter;
 import com.example.student_to_do_list.ui.home.TasksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -14,6 +15,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 
 import com.example.student_to_do_list.databinding.ActivityMainBinding;
@@ -94,5 +97,19 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NewProjectActivity.class); //On déclare l'intention d'aller vers cette activity NewProjectActivity
         startActivity(intent);
     }
+    /*
+    private void setAdapter() {
+        setOnClickListener();
+    }
+    private void setOnClickListener() {
+        listener = new ProjectRVAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent = new Intent(getApplicationContext(), ProjectViewContentActivity.class);
+                intent.putExtra("PROJECT_ID",project.getId()); //Nous récupérons l'ID de la database associé à l'item cliqué et nous ferons un post traitement dans le ProjectViewContentActivity pour afficher les informations nécessaires pour le projet en question
+            }
+        };
+    }*/
+
 
 }

@@ -21,7 +21,7 @@
 
     </style>
 
-    <style name="MyDatePickerStyle" parent="Theme.AppCompat.Light.Dialog">
+    <style name="MyDatePickerStyle" parent="Theme.AppCompat.Light.Dialog"> //Theme pour les calendriers
         <item name="colorAccent">@color/control_activated_calendar_night</item>
         <!--selected Item color-->
         <item name="colorControlActivated">@color/control_activated_calendar_night</item>

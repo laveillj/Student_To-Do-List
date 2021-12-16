@@ -5,16 +5,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.nfc.Tag;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import android.util.Log;
 import com.example.student_to_do_list.Project;
 import com.example.student_to_do_list.ProjectViewContentActivity;
 import com.example.student_to_do_list.R;
 import com.example.student_to_do_list.Task;
+import com.example.student_to_do_list.ui.home.TasksRVAdapter;
 
 import java.util.Collections;
 import java.util.List;
@@ -30,33 +34,32 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
 
     //List<String> dataList;
     private List<Project> projectsList;
-    private Context mContext;
+    private static final String TAG = "ProjectRVAdapter";
+    private OnProjectClickListener mListener;
+    public Context mContext;
+
+    public interface OnProjectClickListener {
+        public void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnProjectClickListener pListener) {
+        this.mListener = pListener;
+    }
 
     public ProjectRVAdapter(List<Project> projectsList, Context context) {
         this.projectsList = projectsList;
-        mContext = context;
+        this.mContext = context;
     }
 
     @Override
     public ItemViewHolder2 onCreateViewHolder(ViewGroup parent, int viewType) {
-
        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.project_card, parent, false);
-       return new ItemViewHolder2(view);
+       return new ItemViewHolder2(view, mListener, mContext);
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder2 holder, int position) {
         Project project = projectsList.get(position); //Récupère la position lié à l'item présent dans la recyclerview
-        holder.project_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Lorsqu'on clique sur un project_card, on genère un nouvel intent vers projectviewcontentActivity
-                Intent intent = new Intent(mContext, ProjectViewContentActivity.class);
-                intent.putExtra("PROJECT_ID",project.getId()); //Nous récupérons l'ID de la database associé à l'item cliqué et nous ferons un post traitement dans le ProjectViewContentActivity pour afficher les informations nécessaires pour le projet en question
-                mContext.startActivity(intent);
-            }
-        });
-
         holder.bind(project);
     }
 
@@ -74,15 +77,26 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
         private View subItem;
         RelativeLayout project_layout;
 
-        public ItemViewHolder2(View itemView) {
+        public ItemViewHolder2(View itemView, final OnProjectClickListener pListener, Context pContext) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.name_project);
             project_layout = itemView.findViewById(R.id.layout_project_card);
             //description = (TextView) itemView.findViewById(R.id.task_sub_item_desc);
             deadline = (TextView) itemView.findViewById(R.id.deadline_project_value);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(pListener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            pListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
-        private void bind(Project project) {
 
+        private void bind(Project project) {
             title.setText(project.getTitle());
             //description.setText(project.getDescription());
             deadline.setText(project.getDeadline());
