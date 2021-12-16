@@ -129,6 +129,12 @@ public class ProjectViewContentActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void editProject(View view) {
+        Intent intent = new Intent(this, ModifyProjectActivity.class);
+        intent.putExtra("MPROJECT_ID", this.strID);
+        startActivity(intent);
+    }
+
     public void addNewTaskToProject(View view) {
         Intent intent = new Intent(this, NewTaskActivity.class).putExtra("PROJECT_ID", strID);
         startActivity(intent);

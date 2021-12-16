@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="150dp"
-        android:text="Ce projet a été développé en collaboration avec Jeremy LAVEILLE connu dans le domaine de la qualité chez Dassault Systems ainsi que de Jean-Michel HA "
+        android:text="Ce projet a été réalisé par Jeremy LAVEILLE et Jean-Michel HA dans le cadre de l'unité «21_E4FE_4E_LE1 - IHM et programmation d'application graphique» dirigé par M. BENABOU de L'ESIEE Paris."
         android:textAlignment="center"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/name"

@@ -37,6 +37,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:text="Add New Task"
+        android:textColor="@color/black"
+        android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/returnButton_new_task"
         app:layout_constraintTop_toTopOf="@+id/validateButton_new_task" />
@@ -54,17 +56,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
+        android:fontFamily="@font/inter_bold"
+        android:drawableLeft="@drawable/subject"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout_name_new_task"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout_name_new_task" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_name_new_task"
-        android:layout_width="300dp"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="75dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_new_task">
@@ -81,7 +86,10 @@
         android:id="@+id/deadline_title_new_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
+        android:drawableLeft="@drawable/date"
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/black"
         android:text="Deadline"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout_name_new_task"
@@ -92,11 +100,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:focusableInTouchMode="false"
+        android:layout_marginTop="43dp"
         android:ems="10"
+        android:focusableInTouchMode="false"
+        android:hint="Enter deadline"
         android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="@+id/deadline_title_new_task"
-        app:layout_constraintStart_toEndOf="@+id/deadline_title_new_task" />
+        app:layout_constraintStart_toEndOf="@+id/deadline_title_new_task"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_name_new_task" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -104,7 +114,7 @@
         android:layout_width="340dp"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,6 +132,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
+        android:drawableLeft="@drawable/description"
+        android:textColor="@color/black"
+        android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout_description_new_task"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout_description_new_task" />

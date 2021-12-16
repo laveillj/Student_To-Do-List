@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.student_to_do_list.ui.dashboard.ProjectsFragment;
 
@@ -27,6 +28,7 @@ public class NewTaskActivity extends AppCompatActivity {
     private boolean underProject;
 
     EditText etDate;
+    EditText tsk_name;
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -42,6 +44,8 @@ public class NewTaskActivity extends AppCompatActivity {
         actionBar.setBackgroundDrawable(colorDrawable);
 
         etDate = findViewById(R.id.editDate_new_task);
+        tsk_name = findViewById(R.id.task_name);
+
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
@@ -86,11 +90,18 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
     public void validateNewTask(View view) {
+        if (tsk_name.getText().toString().isEmpty() || etDate.getText().toString().isEmpty()) {
+            Toast.makeText(NewTaskActivity.this, "Please fill NAME and DEADLINE boxes", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent intent;
         if(underProject)
             intent = new Intent(this, ProjectViewContentActivity.class).putExtra(ProjectsFragment.EXTRA_PROJECT_ID, strID);
         else
             intent = new Intent(this, MainActivity.class);
+
+        Intent intent = new Intent(this, MainActivity.class);
         EditText taskName = (EditText) findViewById(R.id.task_name);
         EditText taskDesc = (EditText) findViewById(R.id.task_description);
         EditText taskDeadline = (EditText) findViewById(R.id.editDate_new_task);
