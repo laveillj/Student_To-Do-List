@@ -35,7 +35,7 @@ public class ProjectViewContentActivity extends AppCompatActivity {
     public TasksRVAdapter rvAdapter;
     DatabaseHelper db;
     private Project project;
-    Button edit ;
+    private String strID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class ProjectViewContentActivity extends AppCompatActivity {
 
         // Get intent content
         Intent intent = getIntent();
-        String strID = intent.getStringExtra(ProjectsFragment.EXTRA_PROJECT_ID);
+        strID = intent.getStringExtra(ProjectsFragment.EXTRA_PROJECT_ID);
         long projectID = Long.parseLong(strID);
         Log.d(TAG, "long projectID: " + strID);
 
@@ -111,20 +111,16 @@ public class ProjectViewContentActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         this.updateTasksFromDb(db);
 
-
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ModifyProjectActivity.class);
-                intent.putExtra("MPROJECT_ID", strID);
-                startActivity(intent);
-            }
-        });
-
     }
 
     public void returnFromTask(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void editProject(View view) {
+        Intent intent = new Intent(this, ModifyProjectActivity.class);
+        intent.putExtra("MPROJECT_ID", this.strID);
         startActivity(intent);
     }
 

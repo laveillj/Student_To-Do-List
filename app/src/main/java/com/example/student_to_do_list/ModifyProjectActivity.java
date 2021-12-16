@@ -22,7 +22,6 @@ public class ModifyProjectActivity extends AppCompatActivity {
 
     DatabaseHelper db;
     private Project project;
-    Button validate;
     EditText email;
     EditText pj_name;
     EditText pj_description;
@@ -111,36 +110,30 @@ public class ModifyProjectActivity extends AppCompatActivity {
                 }
             }
         });
-
-        validate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (pj_name.getText().toString().isEmpty() || deadline.getText().toString().isEmpty()) {
-                    Toast.makeText(ModifyProjectActivity.this, "Please fill NAME and DEADLINE boxes", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-
-                //On va chercher les valeurs présent dans les cases EditText du layout "activity_new_project" et les attribuons à des variables.
-                EditText editText_projectName = (EditText) findViewById(R.id.editProject_name);
-                String projectName = editText_projectName.getText().toString();
-                project.setTitle(projectName);
-
-                EditText editText_projectDescription = (EditText) findViewById(R.id.editProject_description);
-                String Project_description = editText_projectDescription.getText().toString();
-                project.setDescription(Project_description);
-
-                EditText editText_Deadline = (EditText) findViewById(R.id.editDeadline);
-                String Deadline = editText_Deadline.getText().toString();
-                project.setDeadline(Deadline);
-
-                startActivity(intent);
-
-            }
-        });
-
     }
 
+    public void validateNewProject(View view) {
+        if (pj_name.getText().toString().isEmpty() || deadline.getText().toString().isEmpty()) {
+            Toast.makeText(ModifyProjectActivity.this, "Please fill NAME and DEADLINE boxes", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(this, MainActivity.class);
 
+        //On va chercher les valeurs présent dans les cases EditText du layout "activity_new_project" et les attribuons à des variables.
+        EditText editText_projectName = (EditText) findViewById(R.id.editProject_name);
+        String projectName = editText_projectName.getText().toString();
+        project.setTitle(projectName);
+
+        EditText editText_projectDescription = (EditText) findViewById(R.id.editProject_description);
+        String Project_description = editText_projectDescription.getText().toString();
+        project.setDescription(Project_description);
+
+        EditText editText_Deadline = (EditText) findViewById(R.id.editDeadline);
+        String Deadline = editText_Deadline.getText().toString();
+        project.setDeadline(Deadline);
+
+        startActivity(intent);
+
+    }
 
 }

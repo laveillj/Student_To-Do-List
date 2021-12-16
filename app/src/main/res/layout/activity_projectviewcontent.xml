@@ -43,7 +43,8 @@
             android:layout_width="59dp"
             android:layout_height="55dp"
             android:foreground="@drawable/edit"
-            android:foregroundGravity="center" />
+            android:foregroundGravity="center"
+            android:onClick="editProject" />
 
     </LinearLayout>
 
