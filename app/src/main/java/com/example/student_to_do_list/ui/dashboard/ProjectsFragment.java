@@ -2,12 +2,17 @@ package com.example.student_to_do_list.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +73,14 @@ public class ProjectsFragment extends Fragment {
                 Log.d(" ### ", "EXTRA putted in intent: " + intent.getStringExtra(EXTRA_PROJECT_ID));
                 startActivity(intent);
             }
+
+            @Override
+            public void onDeleteClick(int position) {
+                Log.d("test","Deleted item at position number " + projectsList.get(position) + " in RecyclerView");
+                View v = recyclerView.findViewHolderForAdapterPosition(position).itemView;
+                deleteItem(v, projectsList.get(position).getId());
+            }
+
         });
 
         Button clearTasks = (Button) view.findViewById(R.id.clearProjectsButton);
@@ -80,6 +93,7 @@ public class ProjectsFragment extends Fragment {
                 updateProjectsFromDb(db);
             }
         });
+
         return view;
     }
 
@@ -109,4 +123,25 @@ public class ProjectsFragment extends Fragment {
             rvAdapter.notifyDataSetChanged();  //Notify adapter
         }
     }
+
+    private void deleteItem(View rowView, final long position) {
+        //Button project_button = rowView.findViewById(R.id.project_popup);
+        Animation anim = AnimationUtils.loadAnimation(requireContext(),
+                android.R.anim.slide_out_right);
+        anim.setDuration(300);
+        rowView.startAnimation(anim);
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                db = new DatabaseHelper(getContext());
+                db.deleteProject(position);  //Remove the current content from the array
+                updateProjectsFromDb(db);
+            }
+
+        }, anim.getDuration());
+    }
+
+
+
+
 }

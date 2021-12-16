@@ -58,16 +58,17 @@
                         android:textSize="15dp" />
                 </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/edit_project"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/project_popup"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="24dp"
-                    android:backgroundTint="#00FFFFFF"
-                    app:srcCompat="@drawable/setings_points" />
+                    android:layout_marginRight="30dp"
+                    android:foreground="@drawable/more"
+                    android:foregroundGravity="center" />
 
                 <TextView
                     android:id="@+id/id_project"
