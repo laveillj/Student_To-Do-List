@@ -1,139 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_new_task_activity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <Button
-        android:id="@+id/returnButton_new_task"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="59dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="1dp"
-        android:foreground="@drawable/back"
-        android:foregroundGravity="center"
-        android:onClick="returnFromTask"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/validateButton_new_task"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="59dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="1dp"
-        android:foreground="@drawable/check_vector"
-        android:foregroundGravity="center"
-        android:onClick="validateNewTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/returnButton_new_task"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="59dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="1dp"
+            android:foreground="@drawable/back"
+            android:foregroundGravity="center"
+            android:onClick="returnFromTask"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/title_new_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:text="Add New Task"
-        android:textColor="@color/black"
-        android:fontFamily="@font/inter_bold"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/returnButton_new_task"
-        app:layout_constraintTop_toTopOf="@+id/validateButton_new_task" />
+        <Button
+            android:id="@+id/validateButton_new_task"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="59dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="1dp"
+            android:foreground="@drawable/check_vector"
+            android:foregroundGravity="center"
+            android:onClick="validateNewTask"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/name_title_new_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:fontFamily="@font/inter_bold"
-        android:drawableLeft="@drawable/subject"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout_name_new_task"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout_name_new_task" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout_name_new_task"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_new_task">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/task_name"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/title_new_task"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Task Name"
-            android:textCursorDrawable="@color/black"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="13dp"
+            android:text="Add New Task"
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_bold"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/returnButton_new_task"
+            app:layout_constraintTop_toTopOf="@+id/validateButton_new_task" />
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/steal_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/returnButton_new_task" />
 
-    <TextView
-        android:id="@+id/deadline_title_new_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:drawableLeft="@drawable/date"
-        android:fontFamily="@font/inter_bold"
-        android:textColor="@color/black"
-        android:text="Deadline"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout_name_new_task"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_name_new_task" />
-
-    <EditText
-        android:id="@+id/editDate_new_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="43dp"
-        android:ems="10"
-        android:focusableInTouchMode="false"
-        android:hint="Enter deadline"
-        android:inputType="date"
-        app:layout_constraintStart_toEndOf="@+id/deadline_title_new_task"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_name_new_task" />
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout_description_new_task"
-        android:layout_width="340dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deadline_title_new_task">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/task_description"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/name_title_new_task"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Task Description"
-            android:textCursorDrawable="@color/black"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text="Name"
+            android:fontFamily="@font/inter_bold"
+            android:drawableLeft="@drawable/subject"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout_name_new_task"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout_name_new_task" />
 
-    <TextView
-        android:id="@+id/description_title_new_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:drawableLeft="@drawable/description"
-        android:textColor="@color/black"
-        android:fontFamily="@font/inter_bold"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout_description_new_task"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout_description_new_task" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_name_new_task"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_new_task">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/task_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Task Name"
+                android:textCursorDrawable="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
+        <TextView
+            android:id="@+id/deadline_title_new_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:drawableLeft="@drawable/date"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/black"
+            android:text="Deadline"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout_name_new_task"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_name_new_task" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/editDate_new_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="43dp"
+            android:ems="10"
+            android:focusableInTouchMode="false"
+            android:hint="Enter deadline"
+            android:inputType="date"
+            app:layout_constraintStart_toEndOf="@+id/deadline_title_new_task"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_name_new_task" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_description_new_task"
+            android:layout_width="340dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deadline_title_new_task">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/task_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Task Description"
+                android:textCursorDrawable="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/description_title_new_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:drawableLeft="@drawable/description"
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_bold"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout_description_new_task"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout_description_new_task" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

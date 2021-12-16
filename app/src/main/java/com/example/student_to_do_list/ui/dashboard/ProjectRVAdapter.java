@@ -72,7 +72,7 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
     public class ItemViewHolder2 extends RecyclerView.ViewHolder {
 
         private TextView title;
-        //private TextView description;
+        private TextView project_id;
         private TextView deadline;
         private View subItem;
         RelativeLayout project_layout;
@@ -80,9 +80,10 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
         public ItemViewHolder2(View itemView, final OnProjectClickListener pListener, Context pContext) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.name_project);
-            project_layout = itemView.findViewById(R.id.layout_project_card);
-            //description = (TextView) itemView.findViewById(R.id.task_sub_item_desc);
+            project_id = (TextView) itemView.findViewById(R.id.id_project);
             deadline = (TextView) itemView.findViewById(R.id.deadline_project_value);
+            project_layout = itemView.findViewById(R.id.layout_project_card);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -98,7 +99,7 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
 
         private void bind(Project project) {
             title.setText(project.getTitle());
-            //description.setText(project.getDescription());
+            project_id.setText("P" + project.getId());
             deadline.setText(project.getDeadline());
         }
     }

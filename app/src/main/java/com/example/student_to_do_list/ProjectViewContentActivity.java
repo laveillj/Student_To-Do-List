@@ -34,8 +34,9 @@ public class ProjectViewContentActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
     public TasksRVAdapter rvAdapter;
     DatabaseHelper db;
-    private Project project;
     private String strID;
+    private Project project;
+    private long projectID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +56,11 @@ public class ProjectViewContentActivity extends AppCompatActivity {
         // Get intent content
         Intent intent = getIntent();
         strID = intent.getStringExtra(ProjectsFragment.EXTRA_PROJECT_ID);
-        long projectID = Long.parseLong(strID);
+        projectID = Long.parseLong(strID);
         Log.d(TAG, "long projectID: " + strID);
 
         // Project for Database
-        db = new DatabaseHelper(getApplicationContext()); //On associe la variable db le contexte de son application présent dans sa classe DatabaseHelper
+        db = new DatabaseHelper(this); //On associe la variable db le contexte de son application présent dans sa classe DatabaseHelper
         project = db.getProject(projectID); //On utilise ensuite une méthode de la classe DatabaseHelper afin de récupérer le projet associé à l'ID correspond à l'item cliqué dans la recyclerview puis on l'associe à une variable project dont la classe est Project.java
 
         Log.d(TAG, "project name: " + project.getTitle());
@@ -71,6 +72,17 @@ public class ProjectViewContentActivity extends AppCompatActivity {
         VC_project_name.setText(project.getTitle());
         VC_project_description.setText(project.getDescription());
         VC_project_deadline.setText(project.getDeadline());
+
+
+        String strName = intent.getStringExtra(NewTaskActivity.EXTRA_NAME);
+        String strDesc = intent.getStringExtra(NewTaskActivity.EXTRA_DESC);
+        String strDeadline = intent.getStringExtra(NewTaskActivity.EXTRA_DEADLINE);
+        if(strName != null) {
+            Log.d(" ### ### ", "Name for new TASK: " + strName);
+            Task task = new Task(strName, strDesc, strDeadline, projectID);
+            long task_id = db.createTask(task);
+            getIntent().removeExtra(NewTaskActivity.EXTRA_NAME);
+        }
 
     //### RECYCLER VIEW ###
         //create RV adapter from data (fruits strings)
@@ -108,7 +120,6 @@ public class ProjectViewContentActivity extends AppCompatActivity {
             }
         });
 
-        db = new DatabaseHelper(this);
         this.updateTasksFromDb(db);
 
     }
@@ -124,10 +135,14 @@ public class ProjectViewContentActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void addNewTaskToProject(View view) {
+        Intent intent = new Intent(this, NewTaskActivity.class).putExtra("PROJECT_ID", strID);
+        startActivity(intent);
+    }
+
     public void updateTasksFromDb(DatabaseHelper pDB) {
         //Get tasks from database
-        List<Task> newList = pDB.getAllTasks();
-
+        List<Task> newList = pDB.getAllTasksUnderProject(this.projectID);
         if(newList.size() != tasksList.size()) {
             tasksList.clear();
             tasksList.addAll(newList);
