@@ -109,7 +109,8 @@ public class TasksRVAdapter extends RecyclerView.Adapter<TasksRVAdapter.ItemView
             long projectID = task.getProjectId();
             if(projectID != 0)
                 task_project.setText("P" + projectID);
-
+            else
+                task_project.setText("");
         }
     }
 
