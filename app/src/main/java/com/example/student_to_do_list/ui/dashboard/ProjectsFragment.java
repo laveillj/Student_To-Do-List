@@ -35,6 +35,7 @@ import java.util.List;
 
 public class ProjectsFragment extends Fragment {
 
+    public static final String EXTRA_PROJECT_ID = "PROJECT_ID ";
     public List<Project> projectsList = new ArrayList<>();
     public RecyclerView recyclerView;
     public ProjectRVAdapter rvAdapter;
@@ -60,9 +61,11 @@ public class ProjectsFragment extends Fragment {
             @Override
             public void onItemClick(int position) {
                 Project project = projectsList.get(position);
-                Log.d(" ### ", "Project got at position: " + position);
+                Log.d(" ### ", "Project got at position: " + project.getId());
                 Intent intent = new Intent(getActivity(), ProjectViewContentActivity.class);
-                intent.putExtra("PROJECT_ID",project.getId()); //Nous récupérons l'ID de la database associé à l'item cliqué et nous ferons un post traitement dans le ProjectViewContentActivity pour afficher les informations nécessaires pour le projet en question
+                String strProjectID = ""+project.getId();
+                intent.putExtra(EXTRA_PROJECT_ID, strProjectID); //Nous récupérons l'ID de la database associé à l'item cliqué et nous ferons un post traitement dans le ProjectViewContentActivity pour afficher les informations nécessaires pour le projet en question
+                Log.d(" ### ", "EXTRA putted in intent: " + intent.getStringExtra(EXTRA_PROJECT_ID));
                 startActivity(intent);
             }
         });
