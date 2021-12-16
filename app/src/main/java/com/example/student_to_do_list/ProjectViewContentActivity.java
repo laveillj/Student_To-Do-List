@@ -1,11 +1,13 @@
 package com.example.student_to_do_list;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProjectViewContentActivity extends AppCompatActivity {
@@ -18,6 +20,13 @@ public class ProjectViewContentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projectviewcontent);
+
+        // Define ActionBar
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(getResources().getColor(R.color.theme_gold));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         getIncomingIntent();
     }
