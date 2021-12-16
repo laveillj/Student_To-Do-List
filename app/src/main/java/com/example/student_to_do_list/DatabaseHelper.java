@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String LOG = "DatabaseHelper";
 
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "tasksAndProjectsDb";
@@ -33,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_TASK = "task";
     private static final String KEY_T_DESC = "description";
     private static final String KEY_T_DEADLINE = "deadline";
+    private static final String KEY_T_PROJECT = "projectID";
 
     // PROJECTS Table - column names
     private static final String KEY_PROJECT = "project";
@@ -42,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Table Create Statements
     private static final String CREATE_TABLE_TASKS = "CREATE TABLE "
             + TABLE_TASKS + " (" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TASK + " TEXT,"
-            + KEY_T_DESC + " TEXT," + KEY_T_DEADLINE + " TEXT)";
+            + KEY_T_DESC + " TEXT," + KEY_T_DEADLINE + " TEXT," + KEY_T_PROJECT + " TEXT)";
 
     private static final String CREATE_TABLE_PROJECTS = "CREATE TABLE "
             + TABLE_PROJECTS + " (" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_PROJECT + " TEXT,"
@@ -79,15 +80,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Creating a task
      */
     public long createTask(Task task) {
+        Log.d(" ### ### ", "Inside createTask function");
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_TASK, task.getTitle());
         values.put(KEY_T_DESC, task.getDescription());
         values.put(KEY_T_DEADLINE, task.getDeadline());
+        values.put(KEY_T_PROJECT, task.getProjectId());
+
+        Log.d(" ### ### ", "At: " + KEY_TASK + " => " + task.getTitle());
+        Log.d(" ### ### ", "At: " + KEY_T_PROJECT + " => " + task.getProjectId());
+        Log.d(" ### ### ", "values to be inserted: " + values.toString());
 
         // insert row
         long task_id = db.insert(TABLE_TASKS, null, values);
+        Log.d(" ### ", "values to be inserted: " + db.toString());
+
+        Task addedTask = getTask(task_id);
+        Log.d(" ### ", "task inserted with name: " + addedTask.getTitle() + " and project ID: "+ addedTask.getProjectId());
 
         return task_id;
     }
@@ -109,7 +120,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String title = c.getString(c.getColumnIndex(KEY_TASK));
         String desc = c.getString(c.getColumnIndex(KEY_T_DESC));
         String deadline = c.getString(c.getColumnIndex(KEY_T_DEADLINE));
-        Task task = new Task(title, desc, deadline);
+        long project = c.getInt(c.getColumnIndex(KEY_T_PROJECT));
+        Task task = new Task(title, desc, deadline, project);
 
         task.setId(c.getInt(c.getColumnIndex(KEY_ID)));
 
@@ -134,7 +146,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String title = c.getString(c.getColumnIndex(KEY_TASK));
                 String desc = c.getString(c.getColumnIndex(KEY_T_DESC));
                 String deadline = c.getString(c.getColumnIndex(KEY_T_DEADLINE));
-                Task task = new Task(title, desc, deadline);
+                long project = c.getLong(c.getColumnIndex(KEY_T_PROJECT));
+                Task task = new Task(title, desc, deadline, project);
+                task.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+
+                // adding to tasks list
+                listOfTasks.add(task);
+            } while (c.moveToNext());
+        }
+        return listOfTasks;
+    }
+
+    /*
+     * getting all tasks under a specific project
+     * */
+    public List<Task> getAllTasksUnderProject(long projectId) {
+        List<Task> listOfTasks = new ArrayList<Task>();
+        String selectQuery = "SELECT  * FROM " + TABLE_TASKS + " WHERE " + KEY_T_PROJECT + " = " + projectId;
+
+        Log.e(LOG, selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                String title = c.getString(c.getColumnIndex(KEY_TASK));
+                String desc = c.getString(c.getColumnIndex(KEY_T_DESC));
+                String deadline = c.getString(c.getColumnIndex(KEY_T_DEADLINE));
+                long project = c.getLong(c.getColumnIndex(KEY_T_PROJECT));
+                Task task = new Task(title, desc, deadline, project);
                 task.setId(c.getInt(c.getColumnIndex(KEY_ID)));
 
                 // adding to tasks list
@@ -154,6 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(KEY_TASK, task.getTitle());
         values.put(KEY_T_DESC, task.getDescription());
         values.put(KEY_T_DEADLINE, task.getDeadline());
+        values.put(KEY_T_PROJECT, task.getDeadline());
 
         // updating row
         return db.update(TABLE_TASKS, values, KEY_ID + " = ?",

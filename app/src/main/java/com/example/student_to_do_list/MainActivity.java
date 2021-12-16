@@ -14,6 +14,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import android.util.Log;
 import android.view.View;
 
 import com.example.student_to_do_list.databinding.ActivityMainBinding;
@@ -54,15 +56,18 @@ public class MainActivity extends AppCompatActivity {
         String strDeadline = intent.getStringExtra(NewTaskActivity.EXTRA_DEADLINE);
         String strType = intent.getStringExtra(NewTaskActivity.EXTRA_TYPE);
 
+
         // ### DATA BASE ###
         db = new DatabaseHelper(getApplicationContext());
         if(strName != null) {
             switch(strType){
                 case "TASK":
-                    Task task = new Task(strName, strDesc, strDeadline);
+                    Log.d(" ### ### ", "Name for new TASK: " + strName);
+                    Task task = new Task(strName, strDesc, strDeadline, 0);
                     long task_id = db.createTask(task);
                     break;
                 case "PROJECT":
+                    Log.d(" ### ", "Name for new PROJECT: " + strName);
                     Project project = new Project(strName, strDesc, strDeadline);
                     long project_id = db.createProject(project);
                     break;
