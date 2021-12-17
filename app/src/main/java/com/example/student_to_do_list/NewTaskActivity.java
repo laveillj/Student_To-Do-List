@@ -86,6 +86,9 @@ public class NewTaskActivity extends AppCompatActivity {
             intent = new Intent(this, ProjectViewContentActivity.class).putExtra(ProjectsFragment.EXTRA_PROJECT_ID, strID);
         else
             intent = new Intent(this, MainActivity.class);
+
+        finish();
+
         startActivity(intent);
     }
 
@@ -113,6 +116,9 @@ public class NewTaskActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_DESC, strTaskDesc);
         intent.putExtra(EXTRA_DEADLINE, strTaskDeadline);
         intent.putExtra(EXTRA_TYPE, "TASK");
+
+        finish();
+
         startActivity(intent);
     }
 }
