@@ -1,5 +1,6 @@
 package com.example.student_to_do_list.ui.dashboard;
 
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
@@ -8,8 +9,10 @@ import android.content.Intent;
 import android.nfc.Tag;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,6 +43,8 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
 
     public interface OnProjectClickListener {
         public void onItemClick(int position);
+
+        void onDeleteClick(int position);
     }
 
     public void setOnItemClickListener(OnProjectClickListener pListener) {
@@ -69,11 +74,12 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
         //return dataList.size();
     }
 
-    public class ItemViewHolder2 extends RecyclerView.ViewHolder {
+    public class ItemViewHolder2 extends RecyclerView.ViewHolder implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
         private TextView title;
         private TextView project_id;
         private TextView deadline;
+        Button proj_popup;
         private View subItem;
         RelativeLayout project_layout;
 
@@ -83,6 +89,8 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
             project_id = (TextView) itemView.findViewById(R.id.id_project);
             deadline = (TextView) itemView.findViewById(R.id.deadline_project_value);
             project_layout = itemView.findViewById(R.id.layout_project_card);
+            proj_popup = itemView.findViewById(R.id.project_popup);
+            proj_popup.setOnClickListener(this);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -102,7 +110,38 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
             project_id.setText("P" + project.getId());
             deadline.setText(project.getDeadline());
         }
+
+        @Override
+        public void onClick(View v) {
+            showPopupMenu(v);
+        }
+
+        private void showPopupMenu(View view) {
+            PopupMenu popupMenu = new PopupMenu(view.getContext(),view);
+            popupMenu.inflate(R.menu.popup_menu);
+            popupMenu.setOnMenuItemClickListener(this);
+            popupMenu.show();
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()){
+                case R.id.deletePJ:
+                    if(mListener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            mListener.onDeleteClick(position);
+                        }
+                    }
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
     }
+
+
 
 
 }
