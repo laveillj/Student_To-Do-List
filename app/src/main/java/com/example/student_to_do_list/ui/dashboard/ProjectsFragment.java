@@ -135,9 +135,9 @@ public class ProjectsFragment extends Fragment {
             public void run() {
                 db = new DatabaseHelper(getContext());
                 db.deleteProject(position);  //Remove the current content from the array
+                db.deleteAllTasksUnderProject(position);
                 updateProjectsFromDb(db);
             }
-
         }, anim.getDuration());
     }
 

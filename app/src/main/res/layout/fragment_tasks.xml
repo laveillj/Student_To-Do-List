@@ -37,6 +37,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="72dp"
         android:text="CLEAR ALL"
-        android:textColor= "@color/black"/>
+        android:textColor="@color/black" />
 
 </RelativeLayout>

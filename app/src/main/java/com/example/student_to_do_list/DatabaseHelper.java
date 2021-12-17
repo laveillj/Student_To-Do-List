@@ -217,8 +217,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.delete(TABLE_TASKS, null, null);
     }
 
+    public void deleteAllTasksUnderProject(long projectId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<Task> allProjectTasks = getAllTasksUnderProject(projectId);
+        // delete all tasks in the list
+        for (Task task : allProjectTasks) {
+            deleteTask(task.getId());
+        }
+    }
 
-    
+
+
+
     //
     // PROJECTS management functions
     //

@@ -30,12 +30,15 @@ import com.example.student_to_do_list.NewTaskActivity;
 import com.example.student_to_do_list.R;
 import com.example.student_to_do_list.Task;
 import com.example.student_to_do_list.TasksContract;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TasksFragment extends Fragment {
 
+    public View view;
+    public TasksFragment mFragment;
     public List<Task> tasksList = new ArrayList<>();
     public RecyclerView recyclerView;
     public TasksRVAdapter rvAdapter;
@@ -43,7 +46,8 @@ public class TasksFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tasks, container, false);
+        view = inflater.inflate(R.layout.fragment_tasks, container, false);
+        mFragment = this;
 
     //### RECYCLER VIEW ###
         //create RV adapter from data (fruits strings)
@@ -77,7 +81,7 @@ public class TasksFragment extends Fragment {
             public void onDeleteClick(int position) {
                 Log.d("test","Deleted item at position number " + tasksList.get(position) + " in RecyclerView");
                 View v = recyclerView.findViewHolderForAdapterPosition(position).itemView;
-                deleteItem(v, tasksList.get(position), position);
+                deleteItem(v, mFragment, tasksList.get(position), position);
             }
         });
 
@@ -126,7 +130,7 @@ public class TasksFragment extends Fragment {
         this.updateTasksFromDb(db);
     }
 
-    private void deleteItem(View rowView, Task pTask, int position) {
+    private void deleteItem(View rowView, TasksFragment pFragment, Task pTask, int position) {
         Button task_status_button = rowView.findViewById(R.id.task_item_status_button);
         task_status_button.setForeground(getContext().getResources().getDrawable(R.drawable.task_status_1));
         Animation anim = AnimationUtils.loadAnimation(requireContext(),
@@ -141,11 +145,25 @@ public class TasksFragment extends Fragment {
                 updateTasksFromDb(db);
                 task_status_button.setForeground(getContext().getResources().getDrawable(R.drawable.task_status_0));
 
-                final CustomDialog dialog = new CustomDialog(getContext(), pTask);
-                dialog.show();
+                showSnackbarActionCall(db, pTask);
             }
-
         }, anim.getDuration());
     }
 
+    private void showSnackbarActionCall(DatabaseHelper pDB, Task pTask) {
+        Snackbar snackbar = Snackbar
+                .make(this.view, "1 Task complete", Snackbar.LENGTH_LONG)
+                .setAction("CANCEL", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        pDB.createTask(pTask);
+                        updateTasksFromDb(pDB);
+                        // Show another Snackbar.
+                        Snackbar snackbar1 = Snackbar.make(view, "Task is restored", Snackbar.LENGTH_SHORT);
+                        snackbar1.show();
+                    }
+                });
+
+        snackbar.show();
+    }
 }

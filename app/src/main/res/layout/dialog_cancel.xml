@@ -3,20 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="320dp"
     android:layout_height="wrap_content"
     android:paddingLeft="16dp"
     android:background="@drawable/layout_bg">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginLeft="20dp"
         android:fontFamily="@font/inter_bold"
         android:text="1 Task complete"
         android:textColor="@color/white"
-        android:textSize="15dp"
+        android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/button_cancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/button_cancel" />
@@ -27,11 +27,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="0dp"
+        android:background="#00FFFFFF"
         android:backgroundTint="@color/cardview_dark_background"
         android:text="Cancel"
         android:textColor="#1E90FF"
-        android:textSize="18dp"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </LinearLayout>

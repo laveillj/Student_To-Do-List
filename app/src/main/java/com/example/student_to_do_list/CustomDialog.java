@@ -11,16 +11,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.student_to_do_list.ui.home.TasksFragment;
+
 public class CustomDialog extends Dialog {
 
     private Button buttonCancel;
     public Context mContext;
+    private TasksFragment mFragment;
     private Task mTask;
     DatabaseHelper db;
 
-    public CustomDialog(Context pContext, Task pTask) {
+    public CustomDialog(Context pContext, TasksFragment pFragment, Task pTask) {
         super(pContext);
         this.mContext = pContext;
+        this.mFragment = pFragment;
         this.mTask = pTask;
     }
 
@@ -45,6 +49,7 @@ public class CustomDialog extends Dialog {
     // User click "Cancel" button.
     private void buttonCancelClick()  {
         db.createTask(mTask);
+        this.mFragment.updateTasksFromDb(db);
         this.dismiss();
     }
 }
