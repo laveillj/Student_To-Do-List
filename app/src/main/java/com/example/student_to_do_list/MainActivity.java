@@ -91,11 +91,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNewTask(View view) {
         Intent intent = new Intent(this, NewTaskActivity.class).putExtra("PROJECT_ID", "0");
+        finish();
         startActivity(intent);
     }
 
     public void addNewProject(View view) {
         Intent intent = new Intent(this, NewProjectActivity.class); //On déclare l'intention d'aller vers cette activity NewProjectActivity
+        finish();
         startActivity(intent);
     }
 

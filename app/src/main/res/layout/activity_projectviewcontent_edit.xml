@@ -23,7 +23,7 @@
             android:layout_height="55dp"
             android:foreground="@drawable/back"
             android:foregroundGravity="center"
-            android:onClick="returnFromTask" />
+            android:onClick="returnFromModification" />
 
         <TextView
             android:id="@+id/textView"
@@ -33,8 +33,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:fontFamily="@font/inter_regular"
-            android:text="Project details"
+            android:fontFamily="@font/inter_bold"
+            android:text="Project Edition"
             android:textSize="20sp" />
 
         <Button
@@ -72,7 +72,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginLeft="26dp"
         android:layout_marginRight="26dp"
-        android:hint="Enter Name"
+        android:hint="Project name"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:fontFamily="@font/inter_bold"
@@ -102,7 +102,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:hint="Enter deadline"
+            android:hint="Choose a Deadline"
             android:inputType="date"
             android:ems="10"
             android:focusableInTouchMode="false"

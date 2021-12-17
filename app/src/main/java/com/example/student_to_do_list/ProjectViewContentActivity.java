@@ -55,9 +55,24 @@ public class ProjectViewContentActivity extends AppCompatActivity {
 
         // Get intent content
         Intent intent = getIntent();
-        strID = intent.getStringExtra(ProjectsFragment.EXTRA_PROJECT_ID);
-        projectID = Long.parseLong(strID);
-        Log.d(TAG, "long projectID: " + strID);
+
+        if (intent.hasExtra(ProjectsFragment.EXTRA_PROJECT_ID) ){
+            strID = intent.getStringExtra(ProjectsFragment.EXTRA_PROJECT_ID);
+            projectID = Long.parseLong(strID);
+            Log.d(TAG, "long projectID: " + strID);
+        }
+
+        else if (intent.hasExtra("RETURN_PROJECT_ID")){
+            strID = intent.getStringExtra("RETURN_PROJECT_ID");
+            projectID = Long.parseLong(strID);
+            Log.d(TAG, "long projectID: " + strID);
+        }
+
+        else if (intent.hasExtra("VALI_PROJECT_ID")){
+            strID = intent.getStringExtra("VALI_PROJECT_ID");
+            projectID = Long.parseLong(strID);
+            Log.d(TAG, "long projectID: " + strID);
+        }
 
         // Project for Database
         db = new DatabaseHelper(this); //On associe la variable db le contexte de son application présent dans sa classe DatabaseHelper
@@ -126,17 +141,20 @@ public class ProjectViewContentActivity extends AppCompatActivity {
 
     public void returnFromTask(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        finish();
         startActivity(intent);
     }
 
     public void editProject(View view) {
         Intent intent = new Intent(this, ModifyProjectActivity.class);
         intent.putExtra("MPROJECT_ID", this.strID);
+        finish();
         startActivity(intent);
     }
 
     public void addNewTaskToProject(View view) {
         Intent intent = new Intent(this, NewTaskActivity.class).putExtra("PROJECT_ID", strID);
+        finish();
         startActivity(intent);
     }
 

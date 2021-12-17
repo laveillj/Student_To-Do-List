@@ -64,6 +64,13 @@ public class ModifyProjectActivity extends AppCompatActivity {
 
     }
 
+    public void returnFromModification(View view) {
+        Intent intent = new Intent(this, ProjectViewContentActivity.class);
+        intent.putExtra("RETURN_PROJECT_ID", this.strID2);
+        finish();
+        startActivity(intent);
+    }
+
     public void inputmodifyEmail (View view){
 
         if (!email.getText().toString().isEmpty() && !pj_name.getText().toString().isEmpty() && !pj_description.getText().toString().isEmpty() && !deadline.getText().toString().isEmpty())
@@ -114,8 +121,8 @@ public class ModifyProjectActivity extends AppCompatActivity {
     }
 
     public void validateModifyProject(View view) {
-        if (pj_name.getText().toString().isEmpty() || deadline.getText().toString().isEmpty()) {
-            Toast.makeText(ModifyProjectActivity.this, "Please fill NAME and DEADLINE boxes", Toast.LENGTH_SHORT).show();
+        if (pj_name.getText().toString().isEmpty() || deadline.getText().toString().isEmpty() || pj_description.getText().toString().isEmpty() ) {
+            Toast.makeText(ModifyProjectActivity.this, "Please fill NAME, PROJECT and DEADLINE boxes", Toast.LENGTH_SHORT).show();
             return;
         }
         //On va chercher les valeurs présent dans les cases EditText du layout "activity_new_project" et les attribuons à des variables.
@@ -134,7 +141,8 @@ public class ModifyProjectActivity extends AppCompatActivity {
         db.updateProject(project);
 
         Intent intent = new Intent(this, ProjectViewContentActivity.class);
-        intent.putExtra("PROJECT_ID", this.strID2);
+        intent.putExtra("VALI_PROJECT_ID", this.strID2);
+        finish();
         startActivity(intent);
 
     }

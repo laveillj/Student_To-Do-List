@@ -107,13 +107,16 @@ public class NewProjectActivity extends AppCompatActivity {
 
     public void returnFromTask(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+
+        finish();
+
         startActivity(intent);
     }
 
     public void validateNewProject(View view) {
 
-        if (pj_name.getText().toString().isEmpty() || deadline.getText().toString().isEmpty()) {
-            Toast.makeText(NewProjectActivity.this, "Please fill NAME and DEADLINE boxes", Toast.LENGTH_SHORT).show();
+        if (pj_name.getText().toString().isEmpty() || deadline.getText().toString().isEmpty() || pj_description.getText().toString().isEmpty()) {
+            Toast.makeText(NewProjectActivity.this, "Please fill NAME, PROJECT and DEADLINE boxes", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -138,6 +141,8 @@ public class NewProjectActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, CollaboratorMail);*/
 
         intent.putExtra(EXTRA_TYPE, "PROJECT");
+
+        finish();
 
         startActivity(intent);
     }

@@ -38,14 +38,17 @@ import com.example.student_to_do_list.ui.home.TasksRVAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+//Fragment pour les projets appartenant à la main activity, ce fragment gère une recycler view contenant pour item une project card
 public class ProjectsFragment extends Fragment {
 
+    //initialisation variable
     public static final String EXTRA_PROJECT_ID = "PROJECT_ID";
     public List<Project> projectsList = new ArrayList<>();
     public RecyclerView recyclerView;
     public ProjectRVAdapter rvAdapter;
     DatabaseHelper db;
 
+    //Création de la view du fragment project
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_projects, container, false);
