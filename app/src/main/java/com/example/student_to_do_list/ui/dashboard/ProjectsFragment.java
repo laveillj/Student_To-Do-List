@@ -86,6 +86,7 @@ public class ProjectsFragment extends Fragment {
 
         });
 
+        /*
         Button clearTasks = (Button) view.findViewById(R.id.clearProjectsButton);
         clearTasks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +96,7 @@ public class ProjectsFragment extends Fragment {
                 db.deleteAllProjects();
                 updateProjectsFromDb(db);
             }
-        });
+        });*/
 
         return view;
     }

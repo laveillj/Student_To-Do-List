@@ -26,7 +26,7 @@
         android:onClick="addNewProject"
         app:cornerRadius="30dp" />
 
-    <Button
+    <!-- <Button
         android:id="@+id/clearProjectsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +35,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="72dp"
         android:text="CLEAR ALL"
-        android:textColor= "@color/black"/>
+        android:textColor= "@color/black"/> -->
 
 </RelativeLayout>

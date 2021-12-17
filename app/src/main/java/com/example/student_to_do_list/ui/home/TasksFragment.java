@@ -85,6 +85,7 @@ public class TasksFragment extends Fragment {
             }
         });
 
+        /*
         Button clearTasks = (Button) view.findViewById(R.id.clearTasksButton);
         clearTasks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +96,7 @@ public class TasksFragment extends Fragment {
                 //rvAdapter = new TasksRVAdapter(tasksList);
                 //recyclerView.setAdapter(rvAdapter);
             }
-        });
+        });*/
 
         return view;
     }
