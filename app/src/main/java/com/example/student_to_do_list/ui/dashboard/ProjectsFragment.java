@@ -67,6 +67,7 @@ public class ProjectsFragment extends Fragment {
 
         rvAdapter.setOnItemClickListener(new ProjectRVAdapter.OnProjectClickListener() {
             @Override
+            //Fonction permettant de démarrer une activité "observation des détails du projet" à partir d'un click sur un item dans la RV et d'affiché les informations pertinent au projet sélectionné
             public void onItemClick(int position) {
                 Project project = projectsList.get(position);
                 Log.d(" ### ", "Project got at position: " + project.getId());
@@ -78,6 +79,7 @@ public class ProjectsFragment extends Fragment {
             }
 
             @Override
+            //Fonction d'effaçant d'item projet, cette methode est appelé dans la RVAdapter des projets.
             public void onDeleteClick(int position) {
                 Log.d("test","Deleted item at position number " + projectsList.get(position) + " in RecyclerView");
                 View v = recyclerView.findViewHolderForAdapterPosition(position).itemView;
@@ -86,6 +88,8 @@ public class ProjectsFragment extends Fragment {
 
         });
 
+
+        //Fonction précedemment utilisé pour effacer l'ensemble des projets/taches en un click
         /*
         Button clearTasks = (Button) view.findViewById(R.id.clearProjectsButton);
         clearTasks.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +109,7 @@ public class ProjectsFragment extends Fragment {
     public void onDestroy() { super.onDestroy(); }
 
     @Override
+    //A la reprise du fragment projet, la recyclerview se met à jour avec les donnée de la database pour afficher des données pertinentes
     public void onResume() {
         super.onResume();
         db = new DatabaseHelper(getContext());
@@ -127,7 +132,7 @@ public class ProjectsFragment extends Fragment {
             rvAdapter.notifyDataSetChanged();  //Notify adapter
         }
     }
-
+    //Fonction d'effaçage d'un item dans la recyclerview appelé en haut dans le onDeleteClick()
     private void deleteItem(View rowView, final long position) {
         //Button project_button = rowView.findViewById(R.id.project_popup);
         Animation anim = AnimationUtils.loadAnimation(requireContext(),

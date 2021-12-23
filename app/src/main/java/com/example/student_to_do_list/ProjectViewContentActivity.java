@@ -27,6 +27,7 @@ import com.example.student_to_do_list.ui.home.TasksRVAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+//Activité permettant d'afficher les détails complètes d'un projet spécifique
 public class ProjectViewContentActivity extends AppCompatActivity {
 
     private static final String TAG = "### ProjectViewContentActivity ###";
@@ -56,6 +57,10 @@ public class ProjectViewContentActivity extends AppCompatActivity {
         // Get intent content
         Intent intent = getIntent();
 
+
+        //L'accès à l'activité ProjectViewContentActivity recommende un ID afin de pouvoir déterminé sur quel projet de la database nous nous basons afin d'afficher les éléments.
+        //Cette ID peut être renvoyé depuis 3 "trigger", depuis la RV du fragment projet sur le click d'un item, depuis l'edition d'un projet à l'appui sur le bouton retour et depuis l'édition d'un projet à l'appui sur le bouton validé
+        //Il semble plus sécurisé de déterminer depuis où l'intent est généré afin de trier en conséquence.
         if (intent.hasExtra(ProjectsFragment.EXTRA_PROJECT_ID) ){
             strID = intent.getStringExtra(ProjectsFragment.EXTRA_PROJECT_ID);
             projectID = Long.parseLong(strID);
@@ -99,7 +104,9 @@ public class ProjectViewContentActivity extends AppCompatActivity {
             getIntent().removeExtra(NewTaskActivity.EXTRA_NAME);
         }
 
-    //### RECYCLER VIEW ###
+    //### RECYCLER VIEW POUR LES TACHES AJOUTABLES POUR UN PROJET ###
+        //Les fonctions ci-après sont similaires à celle dans le TaskFragment (fragment pour les tâches)
+
         //create RV adapter from data (fruits strings)
         rvAdapter = new TasksRVAdapter(tasksList, this);
 

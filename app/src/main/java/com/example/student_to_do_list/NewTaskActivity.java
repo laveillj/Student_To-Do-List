@@ -93,8 +93,8 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
     public void validateNewTask(View view) {
-        if (tsk_name.getText().toString().isEmpty() || etDate.getText().toString().isEmpty()) {
-            Toast.makeText(NewTaskActivity.this, "Please fill NAME and DEADLINE boxes", Toast.LENGTH_SHORT).show();
+        if (tsk_name.getText().toString().isEmpty()) {
+            Toast.makeText(NewTaskActivity.this, "Please fill NAME", Toast.LENGTH_SHORT).show();
             return;
         }
 

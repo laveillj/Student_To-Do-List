@@ -32,7 +32,7 @@ import androidx.lifecycle.ViewModel;
 
 
 
-
+//Adapteur pour le recycler view présent dans l'onglet projet
 public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.ItemViewHolder2> {
 
     //List<String> dataList;
@@ -57,6 +57,7 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
     }
 
     @Override
+    //Fonction définissant le style de l'item qui sera utilisé lors de sa création dans la recyclerview projet (voir project_cart.xml)
     public ItemViewHolder2 onCreateViewHolder(ViewGroup parent, int viewType) {
        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.project_card, parent, false);
        return new ItemViewHolder2(view, mListener, mContext);
@@ -69,11 +70,13 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
     }
 
     @Override
+    //Fonction permettant de récupérer le nombre d'item crée dans la recyclerview projet
     public int getItemCount() {
         return projectsList == null ? 0 : projectsList.size();
         //return dataList.size();
     }
 
+    //Création d'une classe pour l'item project card avec l'ensemble de ces éléments
     public class ItemViewHolder2 extends RecyclerView.ViewHolder implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
         private TextView title;
@@ -112,6 +115,7 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
         }
 
         @Override
+        //Fonction pop up menu pour chaque item
         public void onClick(View v) {
             showPopupMenu(v);
         }
@@ -124,6 +128,7 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
         }
 
         @Override
+        //Fonction pour les choix qui sont présent à l'interieur du pop up menu
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()){
                 case R.id.deletePJ:

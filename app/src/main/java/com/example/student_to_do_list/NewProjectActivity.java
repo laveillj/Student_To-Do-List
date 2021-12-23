@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+//Cette activité gère le fenetre de création d'un nouveau projet (attribution de nom, description, deadline ...)
 public class NewProjectActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "N ";   //or "com.example.StudentToDoList.MESSAGE"
@@ -34,6 +35,7 @@ public class NewProjectActivity extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
+    //Création du fragment gérant la création d'un projet
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_project);
@@ -52,11 +54,14 @@ public class NewProjectActivity extends AppCompatActivity {
         buttonSend = findViewById(R.id.button_addcollab);
 
         deadline = findViewById(R.id.editDeadline);
+
+        //On fait appel à un widget pour avoir un calendrier afin de sélectionner la deadline qui sera, au final, affiché sous forme de string dans un EditText
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+        //Onclick listener sur l'edittext deadline du xml activity_new_project
         deadline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,12 +75,14 @@ public class NewProjectActivity extends AppCompatActivity {
                     }
                 },year,month,day);
                 datePickerDialog.show();
+                //définie la couleur en bleu des boutons "Annuler" et "OK" du calendrier
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLUE);
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE);
             }
         });
 
-        buttonSend.setOnClickListener(new View.OnClickListener() { //A l'appui du bouton send, on concatene le mail à envoyer avec les donnée qui ont été entrée par l'utilisateur (dans les edittext) puis on redirige ces données vers la boite mail
+        //A l'appui du bouton send, on concatene le mail à envoyer avec les données qui ont été entrée par l'utilisateur (dans les edittext) puis on redirige ces données vers la boite mail. A la fin nous avons un mail pré remplie avec les informations du projet concerné
+        buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!email.getText().toString().isEmpty() && !pj_name.getText().toString().isEmpty() && !pj_description.getText().toString().isEmpty() && !deadline.getText().toString().isEmpty())
@@ -90,7 +97,7 @@ public class NewProjectActivity extends AppCompatActivity {
                     intentmail.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
                     intentmail.putExtra(Intent.EXTRA_SUBJECT, mail_subject);
                     intentmail.putExtra(Intent.EXTRA_TEXT, mail_content);
-                    intentmail.setType("message/rfc822");
+                    intentmail.setType("message/rfc822"); //défini le type d'application mail à utiliser pour faire le mail
                     if(intentmail.resolveActivity(getPackageManager()) != null) {
                         startActivity(intentmail);
                     }
@@ -105,14 +112,14 @@ public class NewProjectActivity extends AppCompatActivity {
         });
     }
 
+    //Fonction pour le bouton retour, la fonction étant la même pour n'importe quel bouton retour, nous ignorons son nom
     public void returnFromTask(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-
         finish();
-
         startActivity(intent);
     }
 
+    //Fonction pour validé la création du nouveau projet, elle permet de renvoyer sur la main activity après avoir pris en compte les différentes informations rentré.
     public void validateNewProject(View view) {
 
         if (pj_name.getText().toString().isEmpty() || deadline.getText().toString().isEmpty() || pj_description.getText().toString().isEmpty()) {
@@ -142,7 +149,7 @@ public class NewProjectActivity extends AppCompatActivity {
 
         intent.putExtra(EXTRA_TYPE, "PROJECT");
 
-        finish();
+        finish(); //termine l'activité en cours en l'occurence NewProjectActivity
 
         startActivity(intent);
     }

@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_regular"
                 android:textSize="16sp"
-                android:hint="Task_description" />
+                android:hint="(No description)" />
 
             <LinearLayout
                 android:id="@+id/task_sub_deadline"
@@ -105,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_regular"
                     android:textSize="16sp"
-                    android:hint="Deadline" />
+                    android:hint="(No Deadline)" />
             </LinearLayout>
         </LinearLayout>
 </LinearLayout>

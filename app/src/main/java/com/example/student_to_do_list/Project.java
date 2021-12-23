@@ -1,5 +1,6 @@
 package com.example.student_to_do_list;
 
+//Classe ayant des méthodes permettant d'obtenir divers informations à partir l'ID de l'item (projet), nous pouvons obtenir le nom, description, deadline ...
 public class Project {
 
     private long id;
