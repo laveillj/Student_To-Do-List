@@ -1,3 +1,6 @@
+// Student To-Do-List - Unité "IHM et programmation d'applications graphiques"
+// Jean-Michel HA et Jérémy LAVEILLE - E4FE ESIEE Paris 2021
+
 package com.example.student_to_do_list;
 
 import android.app.DatePickerDialog;
@@ -17,8 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.student_to_do_list.ui.dashboard.ProjectsFragment;
 
 import java.util.Calendar;
-//Cette activité est accessible à partir de l'activité ProjectViewContentActivity
-//Activité afin de pouvoir éditer un projet, elle prend un compte la base de donnée afin de faire les mises à jour de celle-ci, toutes les fonctions sont identiques à NewProjectActivity, nous rajoutons seulement la mise à jour de la base de données en complément
+
+// Cette activité est accessible à partir de l'activité ProjectViewContentActivity
+// Activité afin de pouvoir éditer un projet, elle prend un compte la base de donnée afin de faire les mises à jour de celle-ci,
+// toutes les fonctions sont identiques à NewProjectActivity, nous rajoutons seulement la mise à jour de la base de données en complément.
 public class ModifyProjectActivity extends AppCompatActivity {
 
     DatabaseHelper db;

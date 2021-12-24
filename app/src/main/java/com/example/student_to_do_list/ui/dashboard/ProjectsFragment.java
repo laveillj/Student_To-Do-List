@@ -1,3 +1,6 @@
+// Student To-Do-List - Unité "IHM et programmation d'applications graphiques"
+// Jean-Michel HA et Jérémy LAVEILLE - E4FE ESIEE Paris 2021
+
 package com.example.student_to_do_list.ui.dashboard;
 
 import android.content.Intent;
@@ -5,40 +8,24 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.PopupMenu;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.student_to_do_list.DatabaseHelper;
-import com.example.student_to_do_list.NewProjectActivity;
 import com.example.student_to_do_list.Project;
 import com.example.student_to_do_list.ProjectViewContentActivity;
 import com.example.student_to_do_list.R;
-import com.example.student_to_do_list.RVItemTouchListener;
-import com.example.student_to_do_list.Task;
-import com.example.student_to_do_list.databinding.FragmentProjectsBinding;
-import com.example.student_to_do_list.ui.home.TasksRVAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//Fragment pour les projets appartenant à la main activity, ce fragment gère une recycler view contenant pour item une project card
+//Fragment pour l'onglet Projects appartenant à la main activity, ce fragment gère une recycler view contenant pour item une project card
 public class ProjectsFragment extends Fragment {
 
     //initialisation variable
@@ -53,19 +40,19 @@ public class ProjectsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_projects, container, false);
 
-        //create RV adapter from data (fruits strings)
+        //create RV adapter
         rvAdapter = new ProjectRVAdapter(projectsList, getContext());
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_projects);
 
-        // set RV layout: vertical list
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));     //, LinearLayoutManager.VERTICAL, false));
+        // set RV layout manager
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         // set adapter to RV
         recyclerView.setAdapter(rvAdapter);
         // RV size doesn't depend on amount of content
         recyclerView.hasFixedSize();
 
-        rvAdapter.setOnItemClickListener(new ProjectRVAdapter.OnProjectClickListener() {
+        rvAdapter.setOnProjectClickListener(new ProjectRVAdapter.OnProjectClickListener() {
             @Override
             //Fonction permettant de démarrer une activité "observation des détails du projet" à partir d'un click sur un item dans la RV et d'affiché les informations pertinent au projet sélectionné
             public void onItemClick(int position) {
@@ -88,20 +75,6 @@ public class ProjectsFragment extends Fragment {
 
         });
 
-
-        //Fonction précedemment utilisé pour effacer l'ensemble des projets/taches en un click
-        /*
-        Button clearTasks = (Button) view.findViewById(R.id.clearProjectsButton);
-        clearTasks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "All projects are cleared", Toast.LENGTH_SHORT).show();
-                //int deletedRows = tasksDb.delete(TasksContract.TasksEntry.TABLE_NAME, null, null);
-                db.deleteAllProjects();
-                updateProjectsFromDb(db);
-            }
-        });*/
-
         return view;
     }
 
@@ -116,12 +89,6 @@ public class ProjectsFragment extends Fragment {
         this.updateProjectsFromDb(db);
     }
 
-    public void updateProjectsFromDb() {
-        //### Tasks Database init ###
-        db = new DatabaseHelper(getContext());
-        this.updateProjectsFromDb(db);
-    }
-
     public void updateProjectsFromDb(DatabaseHelper pDB) {
         //Get projects from database
         List<Project> newList = pDB.getAllProjects();
@@ -132,25 +99,24 @@ public class ProjectsFragment extends Fragment {
             rvAdapter.notifyDataSetChanged();  //Notify adapter
         }
     }
+
     //Fonction d'effaçage d'un item dans la recyclerview appelé en haut dans le onDeleteClick()
     private void deleteItem(View rowView, final long position) {
-        //Button project_button = rowView.findViewById(R.id.project_popup);
+        //On initialise l'animation
         Animation anim = AnimationUtils.loadAnimation(requireContext(),
                 android.R.anim.slide_out_right);
-        anim.setDuration(300);
+        anim.setDuration(300); //durée de l'animation
         rowView.startAnimation(anim);
 
+        //Nous jouons ensuite l'animation
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 db = new DatabaseHelper(getContext());
-                db.deleteProject(position);  //Remove the current content from the array
-                db.deleteAllTasksUnderProject(position);
-                updateProjectsFromDb(db);
+                db.deleteProject(position);  //On retire la tache correspondante de la base de données
+                db.deleteAllTasksUnderProject(position); //On supprime aussi toutes les taches sous le projet
+                updateProjectsFromDb(db); //Mise à jour le la RV
             }
         }, anim.getDuration());
     }
-
-
-
 
 }

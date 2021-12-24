@@ -1,3 +1,6 @@
+// Student To-Do-List - Unité "IHM et programmation d'applications graphiques"
+// Jean-Michel HA et Jérémy LAVEILLE - E4FE ESIEE Paris 2021
+
 package com.example.student_to_do_list;
 
 import android.content.ContentValues;
@@ -27,7 +30,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Common column names
     private static final String KEY_ID = "id";
-    //private static final String KEY_CREATED_AT = "created_at";
 
     // TASKS Table - column names
     private static final String KEY_TASK = "task";
@@ -77,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //
 
     /*
-     * Creating a task
+     * Creating a task in db from a Task object
      */
     public long createTask(Task task) {
         Log.d(" ### ### ", "Inside createTask function");
@@ -104,7 +106,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-     * get single task
+     * get single task from an id
      */
     public Task getTask(long task_id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -129,7 +131,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-     * getting all tasks
+     * getting all tasks in db
      * */
     public List<Task> getAllTasks() {
         List<Task> listOfTasks = new ArrayList<Task>();
@@ -187,7 +189,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-     * Updating a task
+     * Updating a task from a Task object
      */
     public int updateTask(Task task) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -204,7 +206,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-     * Deleting tasks
+     * Deleting a task from an id
      */
     public void deleteTask(long task_id) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -234,7 +236,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //
 
     /*
-     * Creating a project
+     * Creating a project in db from a Project object
      */
     public long createProject(Project project) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -251,7 +253,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-     * get single project
+     * get single project from an id
      */
     public Project getProject(long project_id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -275,7 +277,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-     * getting all projects
+     * getting all projects in db
      * */
     public List<Project> getAllProjects() {
         List<Project> listOfProjects = new ArrayList<Project>();
@@ -303,7 +305,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-     * Updating a project
+     * Updating a project from a Project object
      */
     public int updateProject(Project project) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -319,7 +321,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-     * Deleting projects
+     * Deleting a project from an id
      */
     public void deleteProject(long project_id) {
         SQLiteDatabase db = this.getWritableDatabase();

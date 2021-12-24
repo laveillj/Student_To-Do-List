@@ -1,13 +1,12 @@
+// Student To-Do-List - Unité "IHM et programmation d'applications graphiques"
+// Jean-Michel HA et Jérémy LAVEILLE - E4FE ESIEE Paris 2021
+
 package com.example.student_to_do_list.ui.dashboard;
 
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.ClipData;
 import android.content.Context;
-import android.content.Intent;
-import android.nfc.Tag;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,26 +15,14 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import android.util.Log;
 import com.example.student_to_do_list.Project;
-import com.example.student_to_do_list.ProjectViewContentActivity;
 import com.example.student_to_do_list.R;
-import com.example.student_to_do_list.Task;
-import com.example.student_to_do_list.ui.home.TasksRVAdapter;
 
-import java.util.Collections;
 import java.util.List;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
-
-
-//Adapteur pour le recycler view présent dans l'onglet projet
+//Adapteur pour le recycler view présent dans l'onglet Project
 public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.ItemViewHolder2> {
 
-    //List<String> dataList;
     private List<Project> projectsList;
     private static final String TAG = "ProjectRVAdapter";
     private OnProjectClickListener mListener;
@@ -43,11 +30,10 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
 
     public interface OnProjectClickListener {
         public void onItemClick(int position);
-
-        void onDeleteClick(int position);
+        public void onDeleteClick(int position);
     }
 
-    public void setOnItemClickListener(OnProjectClickListener pListener) {
+    public void setOnProjectClickListener(OnProjectClickListener pListener) {
         this.mListener = pListener;
     }
 
@@ -73,7 +59,6 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
     //Fonction permettant de récupérer le nombre d'item crée dans la recyclerview projet
     public int getItemCount() {
         return projectsList == null ? 0 : projectsList.size();
-        //return dataList.size();
     }
 
     //Création d'une classe pour l'item project card avec l'ensemble de ces éléments
@@ -115,7 +100,7 @@ public class ProjectRVAdapter extends RecyclerView.Adapter<ProjectRVAdapter.Item
         }
 
         @Override
-        //Fonction pop up menu pour chaque item
+        //Fonction pop up menu lors du click sur l'item
         public void onClick(View v) {
             showPopupMenu(v);
         }

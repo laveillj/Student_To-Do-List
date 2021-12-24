@@ -1,3 +1,6 @@
+// Student To-Do-List - Unité "IHM et programmation d'applications graphiques"
+// Jean-Michel HA et Jérémy LAVEILLE - E4FE ESIEE Paris 2021
+
 package com.example.student_to_do_list;
 
 import android.content.Intent;
@@ -27,7 +30,7 @@ import com.example.student_to_do_list.ui.home.TasksRVAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-//Activité permettant d'afficher les détails complètes d'un projet spécifique
+//Activité permettant d'afficher les détails complets d'un projet spécifique
 public class ProjectViewContentActivity extends AppCompatActivity {
 
     private static final String TAG = "### ProjectViewContentActivity ###";
@@ -58,8 +61,8 @@ public class ProjectViewContentActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
 
-        //L'accès à l'activité ProjectViewContentActivity recommende un ID afin de pouvoir déterminé sur quel projet de la database nous nous basons afin d'afficher les éléments.
-        //Cette ID peut être renvoyé depuis 3 "trigger", depuis la RV du fragment projet sur le click d'un item, depuis l'edition d'un projet à l'appui sur le bouton retour et depuis l'édition d'un projet à l'appui sur le bouton validé
+        //L'accès à l'activité ProjectViewContentActivity recommande un ID afin de pouvoir déterminer sur quel projet de la database nous nous basons afin d'afficher les éléments.
+        //Cet ID peut être renvoyé depuis 3 "trigger", depuis la RV du fragment projet sur le click d'un item, depuis l'edition d'un projet à l'appui sur le bouton retour et depuis l'édition d'un projet à l'appui sur le bouton valider
         //Il semble plus sécurisé de déterminer depuis où l'intent est généré afin de trier en conséquence.
         if (intent.hasExtra(ProjectsFragment.EXTRA_PROJECT_ID) ){
             strID = intent.getStringExtra(ProjectsFragment.EXTRA_PROJECT_ID);
@@ -79,14 +82,14 @@ public class ProjectViewContentActivity extends AppCompatActivity {
             Log.d(TAG, "long projectID: " + strID);
         }
 
-        // Project for Database
-        db = new DatabaseHelper(this); //On associe la variable db le contexte de son application présent dans sa classe DatabaseHelper
-        project = db.getProject(projectID); //On utilise ensuite une méthode de la classe DatabaseHelper afin de récupérer le projet associé à l'ID correspond à l'item cliqué dans la recyclerview puis on l'associe à une variable project dont la classe est Project.java
+        // Project from Database
+        db = new DatabaseHelper(this);
+        project = db.getProject(projectID); //On utilise une méthode de la classe DatabaseHelper afin de récupérer le projet associé à l'ID correspond à l'item cliqué dans la recyclerview puis on l'associe à une variable project dont la classe est Project.java
 
         Log.d(TAG, "project name: " + project.getTitle());
 
         TextView VC_project_name = findViewById(R.id.Name_project_VC_value); //On récupère le textview pour le nom du projet dans l'activity_projectviewcontent.xml
-        TextView VC_project_description = findViewById(R.id.Description_title_VC_value);
+        TextView VC_project_description = findViewById(R.id.Description_title_VC_value); //De meme pour la description et la deadline
         TextView VC_project_deadline = findViewById(R.id.Deadline_VC_Value);
 
         VC_project_name.setText(project.getTitle());

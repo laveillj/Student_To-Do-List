@@ -1,3 +1,6 @@
+// Student To-Do-List - Unité "IHM et programmation d'applications graphiques"
+// Jean-Michel HA et Jérémy LAVEILLE - E4FE ESIEE Paris 2021
+
 package com.example.student_to_do_list;
 
 import androidx.appcompat.app.ActionBar;
@@ -19,7 +22,7 @@ import java.util.Calendar;
 //Cette activité gère le fenetre de création d'un nouveau projet (attribution de nom, description, deadline ...)
 public class NewProjectActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NAME = "N ";   //or "com.example.StudentToDoList.MESSAGE"
+    public static final String EXTRA_NAME = "N ";
     public static final String EXTRA_DESC = "Dc ";
     public static final String EXTRA_DEADLINE = "Dd ";
     public static final String EXTRA_TYPE = "Type ";
@@ -34,8 +37,8 @@ public class NewProjectActivity extends AppCompatActivity {
 
     DatePickerDialog.OnDateSetListener setListener;
 
-    @Override
     //Création du fragment gérant la création d'un projet
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_project);

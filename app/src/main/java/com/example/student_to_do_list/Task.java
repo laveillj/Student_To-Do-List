@@ -1,17 +1,23 @@
+// Student To-Do-List - Unité "IHM et programmation d'applications graphiques"
+// Jean-Michel HA et Jérémy LAVEILLE - E4FE ESIEE Paris 2021
+
 package com.example.student_to_do_list;
 
+// Classe définissant les objets Task avec différents attributs
+// Elle possède des méthodes permettant d'obtenir ces différentes informations
+// Nous pouvons obtenir l'id, le nom, description, deadline... ou les modififer (getters et setters)
 public class Task {
 
     private long id;
     private String title;
     private String description;
     private String deadline;
-    private long projectId;
-    private boolean expanded;    // State of task expansion (description visible or not)
+    private long projectId;      // Id du projet auquel le tache est associée (0 si associée à aucun projet)
+    private boolean expanded;    // Status de l'expansion de la tache (description visible ou non)
 
-    public Task(String title, String genre, String deadline, long projectId) {
+    public Task(String title, String desc, String deadline, long projectId) {
         this.title = title;
-        this.description = genre;
+        this.description = desc;
         this.deadline = deadline;
         this.projectId = projectId;
     }

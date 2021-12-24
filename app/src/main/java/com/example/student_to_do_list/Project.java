@@ -1,6 +1,11 @@
+// Student To-Do-List - Unité "IHM et programmation d'applications graphiques"
+// Jean-Michel HA et Jérémy LAVEILLE - E4FE ESIEE Paris 2021
+
 package com.example.student_to_do_list;
 
-//Classe ayant des méthodes permettant d'obtenir divers informations à partir l'ID de l'item (projet), nous pouvons obtenir le nom, description, deadline ...
+// Classe définissant les objets Projet avec différents attributs
+// Elle possède des méthodes permettant d'obtenir ces différentes informations
+// Nous pouvons obtenir l'id, le nom, description, deadline... ou les modififer (getters et setters)
 public class Project {
 
     private long id;
