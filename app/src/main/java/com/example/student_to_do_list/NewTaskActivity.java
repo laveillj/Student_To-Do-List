@@ -17,7 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.student_to_do_list.ui.dashboard.ProjectsFragment;
+import com.example.student_to_do_list.ui.projects.ProjectsFragment;
 
 import java.util.Calendar;
 

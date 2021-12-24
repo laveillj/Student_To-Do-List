@@ -17,8 +17,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.student_to_do_list.ui.dashboard.ProjectsFragment;
-
 import java.util.Calendar;
 
 // Cette activité est accessible à partir de l'activité ProjectViewContentActivity

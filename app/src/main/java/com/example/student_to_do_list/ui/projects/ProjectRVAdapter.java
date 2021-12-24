@@ -1,7 +1,7 @@
 // Student To-Do-List - Unité "IHM et programmation d'applications graphiques"
 // Jean-Michel HA et Jérémy LAVEILLE - E4FE ESIEE Paris 2021
 
-package com.example.student_to_do_list.ui.dashboard;
+package com.example.student_to_do_list.ui.projects;
 
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;

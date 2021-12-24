@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,7 +14,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -23,9 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
-import com.example.student_to_do_list.ui.dashboard.ProjectRVAdapter;
-import com.example.student_to_do_list.ui.dashboard.ProjectsFragment;
-import com.example.student_to_do_list.ui.home.TasksRVAdapter;
+import com.example.student_to_do_list.ui.projects.ProjectsFragment;
+import com.example.student_to_do_list.ui.tasks.TasksRVAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
